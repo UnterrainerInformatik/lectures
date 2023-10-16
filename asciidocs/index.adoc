@@ -1,4 +1,4 @@
-= Android - Course
+= Lectures
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
 :experimental:
@@ -7,9 +7,10 @@ ifndef::imagesdir[:imagesdir: images]
 ifdef::backend-html5[]
 
 // https://fontawesome.com/v4.7.0/icons/
-icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
-icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/lectures/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/lectures] ‏ ‏ ‎
 endif::backend-html5[]
 
-== Android
+== Table Of Contents
 
+link::https://unterrainerinformatik.github.io/lectures/android.html[Android]
