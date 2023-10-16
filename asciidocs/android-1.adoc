@@ -1,0 +1,48 @@
+= Android - Course - 1 - Introduction
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/android.html[BACK to Android - Course]
+
+== Grundlagen Android-Entwicklung
+=== Was ist Android?
+- OS- und Programmierplattform von Google für mobile Geräte entwickelt.
+- Basiert auf Linux-Kernel und Java
+
+image:android-1-1.png[align="center",width="100%"]
+
+=== Warum Android?
+- Populärste Plattform für mobile Apps
+- Einfach zu entwickelnde Apps
+- Viele Verteilungsmöglichkeiten
+
+=== Wie funktioniert Android?
+image:android-1-2.png[align="center",width="50%"]
+
+. Deine Apps leben hier zusammen mit den System-Apps (E-Mail, SMS, ...)
+. UI Komponenten, Ressourcen-Management, Lifecycle-Management. Stellt native Bibliotheken für die App zur Verfügung.
+. Jede App läuft in ihrer eigenen Instanz der Android Runtime.
+. Stellt Hardware-Abstraktionen zur Verfügung. Jede App hat Zugriff auf die Hardware, aber nur über die API.
+. Foundateion. Kümmert sich um threading, low-level memory management, etc...
+
+== Android Studio IDE
+
+== Kotlin Grundzüge
+
+== Komponenten einer Android-App
+
+== Mein erster Knopf in Jetpack-Compose
+
+== Android Project Structure
+
+== Deine App mit Gradlew laufen lassen
+

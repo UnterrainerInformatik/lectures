@@ -11,5 +11,19 @@ icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/do
 icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
 endif::backend-html5[]
 
-== Android
+== Introduction
+link:https://unterrainerinformatik.github.io/lectures/android-1.html[Android - 1 - Introduction]
 
+* Grundlagen Android-Entwicklung
+* Android Studio IDE
+* Kotlin Grundzüge
+* Komponenten einer Android-App
+* Mein erster Knopf in Jetpack-Compose
+* Android Project Structure
+* Deine App mit Gradlew laufen lassen
+
+== Android - 2
+link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2 - ]
+
+== Android - 3
+link:https://unterrainerinformatik.github.io/lectures/android-3.html[Android - 3 - ]
