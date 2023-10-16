@@ -449,7 +449,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_android_studio_ide">2. Android Studio IDE</a></li>
-<li><a href="#_kotlin_grundzüge">3. Kotlin Grundzüge</a></li>
+<li><a href="#_kotlin_grundzüge">3. Kotlin Grundzüge</a>
+<ul class="sectlevel2">
+<li><a href="#_kotlin">3.1. Kotlin</a></li>
+<li><a href="#_java_vs_kotlin">3.2. Java vs. Kotlin</a></li>
+<li><a href="#_übung">3.3. Übung</a></li>
+</ul>
+</li>
 <li><a href="#_komponenten_einer_android_app">4. Komponenten einer Android-App</a></li>
 <li><a href="#_mein_erster_knopf_in_jetpack_compose">5. Mein erster Knopf in Jetpack-Compose</a></li>
 <li><a href="#_android_project_structure">6. Android Project Structure</a></li>
@@ -534,13 +540,330 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_android_studio_ide"><a class="anchor" href="#_android_studio_ide"></a>2. Android Studio IDE</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Installation unter: <a href="https://developer.android.com/studio/install">https://developer.android.com/studio/install</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Hausübung:
+Installieren und auf die neueste Version updaten.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_kotlin_grundzüge"><a class="anchor" href="#_kotlin_grundzüge"></a>3. Kotlin Grundzüge</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_kotlin"><a class="anchor" href="#_kotlin"></a>3.1. Kotlin</h3>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-3.png" alt="android 1 3" width="100%"></span></p>
+</div>
+<div class="paragraph">
+<p>Seit 2019 ist Kotlin die bevorzugte Programmiersprache für Android-Apps bei Google
+Seitdem ist die Sprache sehr populär geworden</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_java_vs_kotlin"><a class="anchor" href="#_java_vs_kotlin"></a>3.2. Java vs. Kotlin</h3>
+<div class="sect3">
+<h4 id="_null_safety"><a class="anchor" href="#_null_safety"></a>3.2.1. Null Safety</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Jedes Objekt ist null by default</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public Integer number;</pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Kein Objekt kann null werden</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>val number: Int</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;außer man gibt es so an:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>val number: Int? = null</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_extension_functions"><a class="anchor" href="#_extension_functions"></a>3.2.2. Extension Functions</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Ohne Erweiterung (z.B. Project Lombok) nicht verfügbar. (Ev. noch über Vererbung&#8230;&#8203; Aber nicht jedes zu erweiternde Projekt gehört auch euch.)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Standardmäßig in die Sprache eingebaut. Einfach den Funktionsnamen in jedem beliebigen File mit dem jeweiligen Klassennamen prefixen.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>fun String.removeFirstLastChar(): String =  this.substring(1, this.length - 1)
 
+fun main(args: Array&lt;String&gt;) {
+    val myString= "Hello Everyone"
+    val result = myString.removeFirstLastChar()
+    println("First character is: $result")
+}</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_code"><a class="anchor" href="#_code"></a>3.2.3. Code</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Java</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kotlin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Eher ausführlich (getter, setter).</p>
+</li>
+<li>
+<p>Gibts schon länger als so manches modernes Sprachkonstrukt (z.B. async).</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Sehr kompakt.</p>
+</li>
+<li>
+<p>Weniger Lines Of Code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>&#8658; Besser zu erstellen, lesen und zu warten.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_coroutines"><a class="anchor" href="#_coroutines"></a>3.2.4. Coroutines</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Background Threads. (z.B.: ExecutorService)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Eigener Threadpool</p>
+</li>
+<li>
+<p>In Sprache fix eingebaut</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>fun main() = runBlocking { // this: CoroutineScope
+    launch { // launch a new coroutine and continue
+        delay(1000L) // non-blocking delay for 1 second
+        println("World!") // print after delay
+    }
+    println("Hello") // main coroutine continues
+}
+
+Output:
+Hello
+World!</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_data_classes"><a class="anchor" href="#_data_classes"></a>3.2.5. Data Classes</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Händisch (viel Code oder generiert)</p>
+</li>
+<li>
+<p>Durch Verwendung von Project Lombok</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Ein eingebautes Sprachkonstrukt</p>
+</li>
+<li>
+<p>Getter, Setter, HashCode(), Equals(), toString()&#8230;&#8203; werden automatisch implementiert.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_smart_casts"><a class="anchor" href="#_smart_casts"></a>3.2.6. Smart Casts</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Entwickler muss die Typen überprüfen und angeben.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Casting Checks werden automatisch durchgeführt (smart casts feature).</p>
+</li>
+<li>
+<p>Redundante Checks werden entfernt.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_title"><a class="anchor" href="#_title"></a>3.2.7. title</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>blah</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>code</pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>blah</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>code</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_übung"><a class="anchor" href="#_übung"></a>3.3. Übung</h3>
+<div class="paragraph">
+<p>Spielwiese unter: <a href="https://play.kotlinlang.org/koans/overview">https://play.kotlinlang.org/koans/overview</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -570,7 +893,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-16 12:13:26 UTC
+Last updated 2023-10-16 13:22:17 UTC
 </div>
 </div>
 </body>
