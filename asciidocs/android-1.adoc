@@ -144,6 +144,39 @@ a|* Casting Checks werden automatisch durchgeführt (smart casts feature).
 * Redundante Checks werden entfernt.
 |===
 
+==== No Checked Exceptions
+|===
+|Java |Kotlin
+
+a|Es gibt checked Exceptions.
+
+(Meiner Meinung nach ist das eine gute Sache)
+a|Es gibt keine checked Exceptions.
+
+(Meiner Meinung nach eine schlechte Sache, weil ... nun ... exception handling ist wichtig und sollte nicht optional sein.)
+|===
+
+==== Higher-Order Funcs und Lambdas
+|===
+|Java |Kotlin
+
+a|In abgespeckter Form verfügbar oder mit alten Sprachkonstrukten nachgebaut.
+a|Inherent in Sprache enthalten.
+[kotlin]
+----
+max(strings, { a, b -> a.length < b.length })
+
+/**
+The function max is a higher-order function,
+as it takes a function value as its second argument.
+This second argument is an expression that is itself a function,
+called a function literal,
+which is equivalent to the following named function:
+**/
+
+fun compare(a: String, b: String): Boolean = a.length < b.length
+----
+|===
 
 ==== title
 |===
