@@ -13,4 +13,4 @@ endif::backend-html5[]
 
 == Table Of Contents
 
-link::https://unterrainerinformatik.github.io/lectures/android.html[Android]
+link:https://unterrainerinformatik.github.io/lectures/android.html[Android]
