@@ -1,0 +1,14 @@
+= Android - Course
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+== Android
