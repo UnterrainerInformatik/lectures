@@ -35,8 +35,137 @@ image:android-1-2.png[align="center",width="50%"]
 . Foundateion. Kümmert sich um threading, low-level memory management, etc...
 
 == Android Studio IDE
+Installation unter: link:https://developer.android.com/studio/install[https://developer.android.com/studio/install]
+
+IMPORTANT: Hausübung:
+Installieren und auf die neueste Version updaten.
 
 == Kotlin Grundzüge
+=== Kotlin
+image:android-1-3.png[align="center",width="100%"]
+
+Seit 2019 ist Kotlin die bevorzugte Programmiersprache für Android-Apps bei Google
+Seitdem ist die Sprache sehr populär geworden
+
+=== Java vs. Kotlin
+==== Null Safety
+|===
+|Java |Kotlin
+
+a|Jedes Objekt ist null by default
+[java]
+----
+public Integer number;
+----
+
+a|Kein Objekt kann null werden
+[kotlin]
+----
+val number: Int
+----
+...außer man gibt es so an:
+[kotlin]
+----
+val number: Int? = null
+----
+|===
+
+==== Extension Functions
+|===
+|Java |Kotlin
+
+a|Ohne Erweiterung (z.B. Project Lombok) nicht verfügbar. (Ev. noch über Vererbung... Aber nicht jedes zu erweiternde Projekt gehört auch euch.)
+
+a|Standardmäßig in die Sprache eingebaut. Einfach den Funktionsnamen in jedem beliebigen File mit dem jeweiligen Klassennamen prefixen.
+[kotlin]
+----
+fun String.removeFirstLastChar(): String =  this.substring(1, this.length - 1)
+
+fun main(args: Array<String>) {
+    val myString= "Hello Everyone"
+    val result = myString.removeFirstLastChar()
+    println("First character is: $result")
+}
+----
+|===
+
+==== Code
+|===
+|Java |Kotlin
+a|* Eher ausführlich (getter, setter).
+* Gibts schon länger als so manches modernes Sprachkonstrukt (z.B. async).
+a|* Sehr kompakt.
+* Weniger Lines Of Code.
+
+=> Besser zu erstellen, lesen und zu warten.
+|===
+
+==== Coroutines
+|===
+|Java |Kotlin
+
+a|Background Threads. (z.B.: ExecutorService)
+
+a|* Eigener Threadpool
+* In Sprache fix eingebaut
+[kotlin]
+----
+fun main() = runBlocking { // this: CoroutineScope
+    launch { // launch a new coroutine and continue
+        delay(1000L) // non-blocking delay for 1 second
+        println("World!") // print after delay
+    }
+    println("Hello") // main coroutine continues
+}
+
+Output:
+Hello
+World!
+----
+|===
+
+==== Data Classes
+|===
+|Java |Kotlin
+
+a|* Händisch (viel Code oder generiert)
+* Durch Verwendung von Project Lombok
+
+a|* Ein eingebautes Sprachkonstrukt
+* Getter, Setter, HashCode(), Equals(), toString()... werden automatisch implementiert.
+|===
+
+==== Smart Casts
+|===
+|Java |Kotlin
+
+a|Entwickler muss die Typen überprüfen und angeben.
+a|* Casting Checks werden automatisch durchgeführt (smart casts feature).
+* Redundante Checks werden entfernt.
+|===
+
+
+==== title
+|===
+|Java |Kotlin
+
+a|blah
+[java]
+----
+code
+----
+
+a|blah
+[kotlin]
+----
+code
+----
+|===
+
+=== Übung
+Spielwiese unter: link:https://play.kotlinlang.org/koans/overview[https://play.kotlinlang.org/koans/overview]
+
+IMPORTANT: Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
 
 == Komponenten einer Android-App
 
