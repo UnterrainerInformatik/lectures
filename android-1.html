@@ -456,10 +456,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_übung">3.3. Übung</a></li>
 </ul>
 </li>
-<li><a href="#_komponenten_einer_android_app">4. Komponenten einer Android-App</a></li>
-<li><a href="#_mein_erster_knopf_in_jetpack_compose">5. Mein erster Knopf in Jetpack-Compose</a></li>
-<li><a href="#_android_project_structure">6. Android Project Structure</a></li>
-<li><a href="#_deine_app_mit_gradlew_laufen_lassen">7. Deine App mit Gradlew laufen lassen</a></li>
+<li><a href="#_komponenten_einer_android_app">4. Komponenten einer Android-App</a>
+<ul class="sectlevel2">
+<li><a href="#_androidmanifest_xml">4.1. AndroidManifest.xml</a></li>
+<li><a href="#_application_components">4.2. Application Components</a></li>
+</ul>
+</li>
+<li><a href="#_meine_erste_android_app">5. Meine erste Android-App</a></li>
+<li><a href="#_jetpack_compose">6. Jetpack Compose</a>
+<ul class="sectlevel2">
+<li><a href="#_mein_erster_knopf_in_jetpack_compose">6.1. Mein erster Knopf in Jetpack-Compose</a></li>
+</ul>
+</li>
+<li><a href="#_android_project_structure">7. Android Project Structure</a></li>
+<li><a href="#_deine_app_mit_gradlew_laufen_lassen">8. Deine App mit Gradlew laufen lassen</a></li>
 </ul>
 </div>
 </div>
@@ -478,6 +488,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_grundlagen_android_entwicklung"><a class="anchor" href="#_grundlagen_android_entwicklung"></a>1. Grundlagen Android-Entwicklung</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-0.png" alt="android 1 0" width="100%"></span></p>
+</div>
 <div class="sect2">
 <h3 id="_was_ist_android"><a class="anchor" href="#_was_ist_android"></a>1.1. Was ist Android?</h3>
 <div class="ulist">
@@ -811,7 +824,78 @@ World!</pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_title"><a class="anchor" href="#_title"></a>3.2.7. title</h4>
+<h4 id="_no_checked_exceptions"><a class="anchor" href="#_no_checked_exceptions"></a>3.2.7. No Checked Exceptions</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Es gibt checked Exceptions.</p>
+</div>
+<div class="paragraph">
+<p>(Meiner Meinung nach ist das eine gute Sache)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Es gibt keine checked Exceptions.</p>
+</div>
+<div class="paragraph">
+<p>(Meiner Meinung nach eine schlechte Sache, weil &#8230;&#8203; nun &#8230;&#8203; exception handling ist wichtig und sollte nicht optional sein.)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_higher_order_funcs_und_lambdas"><a class="anchor" href="#_higher_order_funcs_und_lambdas"></a>3.2.8. Higher-Order Funcs und Lambdas</h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Java</th>
+<th class="tableblock halign-left valign-top">Kotlin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>In abgespeckter Form verfügbar oder mit alten Sprachkonstrukten nachgebaut.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Inherent in Sprache enthalten.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>max(strings, { a, b -&gt; a.length &lt; b.length })
+
+/**
+The function max is a higher-order function,
+as it takes a function value as its second argument.
+This second argument is an expression that is itself a function,
+called a function literal,
+which is equivalent to the following named function:
+**/
+
+fun compare(a: String, b: String): Boolean = a.length &lt; b.length</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_title"><a class="anchor" href="#_title"></a>3.2.9. title</h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -859,6 +943,7 @@ World!</pre>
 </td>
 <td class="content">
 Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
+Android-Studio herunterladen: <a href="https://developer.android.com/studio/releases" class="bare">https://developer.android.com/studio/releases</a>
 </td>
 </tr>
 </table>
@@ -869,23 +954,230 @@ Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
 <div class="sect1">
 <h2 id="_komponenten_einer_android_app"><a class="anchor" href="#_komponenten_einer_android_app"></a>4. Komponenten einer Android-App</h2>
 <div class="sectionbody">
-
+<div class="sect2">
+<h3 id="_androidmanifest_xml"><a class="anchor" href="#_androidmanifest_xml"></a>4.1. AndroidManifest.xml</h3>
+<div class="paragraph">
+<p>Jedes Android-App-Projekt muss dieses File im Root des Projekt-Source-Sets enthalten.
+Es enthält wichtige Informationen über die App für:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build Tools</p>
+</li>
+<li>
+<p>The Android Operating System</p>
+</li>
+<li>
+<p>Google Play</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ist eine XML-Datei, die die Struktur der App beschreibt. Ist XML, damit sie leichter von Menschen gelesen und ohne Editor geändert werden kann.
+Wird beim Kompilieren in ein binäres Format übersetzt (wegen Geschwindigkeit).</p>
+</div>
+<div class="paragraph">
+<p>Es enthält Informationen über die Applikation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>functions</p>
+</li>
+<li>
+<p>services</p>
+</li>
+<li>
+<p>broadcast receivers</p>
+</li>
+<li>
+<p>content producers</p>
+</li>
+<li>
+<p>components</p>
+</li>
+<li>
+<p>The apps permissions</p>
+</li>
+<li>
+<p>The apps rights (permissions, die andere Apps brauchen werden, damit sie von eurer App Daten bekommen können.)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_application_components"><a class="anchor" href="#_application_components"></a>4.2. Application Components</h3>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-4.png" alt="android 1 4" width="80%"></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-5.png" alt="android 1 5" width="100%"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fragments</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Teile einer Maske, die innerhalb einer Activity verwendet werden können.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Views und ViewGroups</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Views sind GUI-Elemente. ViewGroups sind Container für Views.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Layouts</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>XML Files, die die Struktur der Activities, Fragments und ViewGroups beschreiben.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Resources</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Images, Strings, UI Layouts&#8230;&#8203;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Manifest</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Explained above.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mein_erster_knopf_in_jetpack_compose"><a class="anchor" href="#_mein_erster_knopf_in_jetpack_compose"></a>5. Mein erster Knopf in Jetpack-Compose</h2>
+<h2 id="_meine_erste_android_app"><a class="anchor" href="#_meine_erste_android_app"></a>5. Meine erste Android-App</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Erstmal Android Studio herunterladen und installieren, falls dies nicht schon erfolgt ist. <a href="https://developer.android.com/studio/releases" class="bare">https://developer.android.com/studio/releases</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jetpack_compose"><a class="anchor" href="#_jetpack_compose"></a>6. Jetpack Compose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Modernes UI Toolkit für Android-Entwicklung.
+Reactive Programming Model.
+Verwendet Kotlin Sprachkonstrukte.
+Vollständig deklarativ wie flutter, Swift UI oder React Native (sag ihm WAS du willst, nicht WIE du es willst).</p>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;beschreibt die UI als Funktion, die Daten in eine UI-Hierarchie transformiert
+&#8230;&#8203;wenn sich die Daten ändern, ruft das Framework diese Funktionen automatisch auf und aktualisiert so die UI</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-7.png" alt="android 1 7" width="100%"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_mein_erster_knopf_in_jetpack_compose"><a class="anchor" href="#_mein_erster_knopf_in_jetpack_compose"></a>6.1. Mein erster Knopf in Jetpack-Compose</h3>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-6.png" alt="android 1 6" width="80%"></span></p>
+</div>
+<div class="sect3">
+<h4 id="_neues_projekt_anlegen"><a class="anchor" href="#_neues_projekt_anlegen"></a>6.1.1. Neues Projekt anlegen</h4>
+<div class="paragraph">
+<p>In der Android Studio IDE, ist ein Projekt-Template eine Android-App, die alle notwendigen Teile hat, um eine Applikation zu erstellen.
+Es hilft dir, ein neues Projekt einzurichten.</p>
+</div>
+<div class="paragraph">
+<p>Schritt für Schritt werden wir unsere erste Android-App erstellen und sie auf dem Emulator starten:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Android Studio starten, indem du auf das Android Studio Icon in deinem Dock oder wo auch immer du Android Studio gespeichert hast, klickst.</p>
+</li>
+<li>
+<p>Wenn Android Studio startet, klicke auf "Start a new Android Studio project" am Welcome-Screen.
+Alternativ kannst Du auch auf File und dann New Project klicken.</p>
+</li>
+<li>
+<p>Klicke auf "Empty Compose Activity" und klicke dann auf Next.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-8.png" alt="android 1 8" width="100%"></span></p>
+</div>
+<div class="paragraph">
+<p>Wenn der leere Compose Activity Screen geladen hat, wirst Du Felder sehen, wie 'Name', 'Package name', 'Save location', 'Language', und 'Minimum SDK'.
+Für dieses Kapitel nennen wir unser Projekt 'Android Community' und lassen die anderen Einstellung in Ruhe.
+Die Sprache ist per Voreinstellung auf Kotlin.
+Minimum SDK ist API 21: Android 5.0 (Lollipop). Das ist die minimale Version von Android, auf der unsere App laufen können wird.
+In diesem Fall wird unser Projekt auf ca. 98.8% aller Android-Geräte laufen können.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-9.png" alt="android 1 9" width="100%"></span></p>
+</div>
+<div class="paragraph">
+<p>Jetzt auf 'Finish' klicken.</p>
+</div>
+<div class="paragraph">
+<p>Jetzt kannst Du Dich ein wenig in den Packages umsehen. Dir wird auffallen, dass es eine 'MainActivity' Klasse gibt, die von 'Activity' ableitet.
+Darin gibt es eine fun (Function) 'onCreate', die eine Methode in 'ComponentActivity' überlädt.</p>
+</div>
+<div class="paragraph">
+<p>Du wirst auch eine Funktion 'setContent' sehen, die den Inhalt einer Composable Funktion setzt.
+Sie nimmt einen Lambda-Ausdruck, die die Elemente enthält, die angezeigt werden sollen. In unserem Fall enthält er das Theme unserer Applikation.</p>
+</div>
+<div class="paragraph">
+<p>In der 'Greeting' Funktion werden wir jetzt unsere eigene Grußformel "Hello, Android
+Community" einsetzen und das Programm ausführen (run).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+            setContent {
+                AndroidCommunityTheme {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        Greeting("Hello, Android Community")
+                }
+            }
+        }
+    }
+}</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_android_project_structure"><a class="anchor" href="#_android_project_structure"></a>7. Android Project Structure</h2>
 <div class="sectionbody">
 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_android_project_structure"><a class="anchor" href="#_android_project_structure"></a>6. Android Project Structure</h2>
-<div class="sectionbody">
-
-</div>
-</div>
-<div class="sect1">
-<h2 id="_deine_app_mit_gradlew_laufen_lassen"><a class="anchor" href="#_deine_app_mit_gradlew_laufen_lassen"></a>7. Deine App mit Gradlew laufen lassen</h2>
+<h2 id="_deine_app_mit_gradlew_laufen_lassen"><a class="anchor" href="#_deine_app_mit_gradlew_laufen_lassen"></a>8. Deine App mit Gradlew laufen lassen</h2>
 <div class="sectionbody">
 
 </div>
@@ -893,7 +1185,7 @@ Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-10-16 13:22:17 UTC
+Last updated 2023-11-06 11:48:08 UTC
 </div>
 </div>
 </body>
