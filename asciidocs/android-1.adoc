@@ -14,6 +14,9 @@ endif::backend-html5[]
 link:https://unterrainerinformatik.github.io/lectures/android.html[BACK to Android - Course]
 
 == Grundlagen Android-Entwicklung
+
+image:android-1-0.png[align="center",width="100%"]
+
 === Was ist Android?
 - OS- und Programmierplattform von Google für mobile Geräte entwickelt.
 - Basiert auf Linux-Kernel und Java
@@ -199,10 +202,129 @@ code
 Spielwiese unter: link:https://play.kotlinlang.org/koans/overview[https://play.kotlinlang.org/koans/overview]
 
 IMPORTANT: Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
+Android-Studio herunterladen: https://developer.android.com/studio/releases
 
 == Komponenten einer Android-App
 
-== Mein erster Knopf in Jetpack-Compose
+=== AndroidManifest.xml
+Jedes Android-App-Projekt muss dieses File im Root des Projekt-Source-Sets enthalten.
+Es enthält wichtige Informationen über die App für:
+
+- Build Tools
+- The Android Operating System
+- Google Play
+
+Ist eine XML-Datei, die die Struktur der App beschreibt. Ist XML, damit sie leichter von Menschen gelesen und ohne Editor geändert werden kann.
+Wird beim Kompilieren in ein binäres Format übersetzt (wegen Geschwindigkeit).
+
+Es enthält Informationen über die Applikation:
+
+* functions
+* services
+* broadcast receivers
+* content producers
+* components
+* The apps permissions
+* The apps rights (permissions, die andere Apps brauchen werden, damit sie von eurer App Daten bekommen können.)
+
+=== Application Components
+image:android-1-4.png[align="center",width="80%"]
+
+image:android-1-5.png[align="center",width="100%"]
+
+* Fragments
+
+Teile einer Maske, die innerhalb einer Activity verwendet werden können.
+
+* Views und ViewGroups
+
+Views sind GUI-Elemente. ViewGroups sind Container für Views.
+
+* Layouts
+
+XML Files, die die Struktur der Activities, Fragments und ViewGroups beschreiben.
+
+* Resources
+
+Images, Strings, UI Layouts...
+
+* Manifest
+
+Explained above.
+
+== Meine erste Android-App
+Erstmal Android Studio herunterladen und installieren, falls dies nicht schon erfolgt ist. https://developer.android.com/studio/releases
+
+== Jetpack Compose
+
+Modernes UI Toolkit für Android-Entwicklung.
+Reactive Programming Model.
+Verwendet Kotlin Sprachkonstrukte.
+Vollständig deklarativ wie flutter, Swift UI oder React Native (sag ihm WAS du willst, nicht WIE du es willst).
+
+...beschreibt die UI als Funktion, die Daten in eine UI-Hierarchie transformiert
+...wenn sich die Daten ändern, ruft das Framework diese Funktionen automatisch auf und aktualisiert so die UI
+
+image:android-1-7.png[align="center",width="100%"]
+
+=== Mein erster Knopf in Jetpack-Compose
+image:android-1-6.png[align="center",width="80%"]
+
+==== Neues Projekt anlegen
+
+In der Android Studio IDE, ist ein Projekt-Template eine Android-App, die alle notwendigen Teile hat, um eine Applikation zu erstellen.
+Es hilft dir, ein neues Projekt einzurichten.
+
+Schritt für Schritt werden wir unsere erste Android-App erstellen und sie auf dem Emulator starten:
+
+1. Android Studio starten, indem du auf das Android Studio Icon in deinem Dock oder wo auch immer du Android Studio gespeichert hast, klickst.
+
+2. Wenn Android Studio startet, klicke auf "Start a new Android Studio project" am Welcome-Screen.
+Alternativ kannst Du auch auf File und dann New Project klicken.
+
+3. Klicke auf "Empty Compose Activity" und klicke dann auf Next.
+
+image:android-1-8.png[align="center",width="100%"]
+
+Wenn der leere Compose Activity Screen geladen hat, wirst Du Felder sehen, wie 'Name', 'Package name', 'Save location', 'Language', und 'Minimum SDK'.
+Für dieses Kapitel nennen wir unser Projekt 'Android Community' und lassen die anderen Einstellung in Ruhe.
+Die Sprache ist per Voreinstellung auf Kotlin.
+Minimum SDK ist API 21: Android 5.0 (Lollipop). Das ist die minimale Version von Android, auf der unsere App laufen können wird.
+In diesem Fall wird unser Projekt auf ca. 98.8% aller Android-Geräte laufen können.
+
+image:android-1-9.png[align="center",width="100%"]
+
+Jetzt auf 'Finish' klicken.
+
+Jetzt kannst Du Dich ein wenig in den Packages umsehen. Dir wird auffallen, dass es eine 'MainActivity' Klasse gibt, die von 'Activity' ableitet.
+Darin gibt es eine fun (Function) 'onCreate', die eine Methode in 'ComponentActivity' überlädt.
+
+Du wirst auch eine Funktion 'setContent' sehen, die den Inhalt einer Composable Funktion setzt.
+Sie nimmt einen Lambda-Ausdruck, die die Elemente enthält, die angezeigt werden sollen. In unserem Fall enthält er das Theme unserer Applikation.
+
+In der 'Greeting' Funktion werden wir jetzt unsere eigene Grußformel "Hello, Android 
+Community" einsetzen und das Programm ausführen (run).
+
+[kotlin]
+----
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState:Bundle?) {
+        super.onCreate(savedInstanceState)
+            setContent {
+                AndroidCommunityTheme {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = MaterialTheme.colors.background
+                    ) {
+                        Greeting("Hello, Android Community")
+                }
+            }
+        }
+    }
+}
+----
+
+
 
 == Android Project Structure
 
