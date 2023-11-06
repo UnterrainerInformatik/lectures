@@ -1,0 +1,71 @@
+= Android - Course - 1 - Introduction
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/android.html[BACK to Android - Course]
+
+== Android Views mit Jetpack Compose
+image:android-2-0.png[align="center",width="100%"]
+
+=== Einleitung
+Das wichtigste Element bei Android-Apps ist natürlich die GUI.
+Früher hat man die GUI mit Java-Code entwickelt und mit XML-Dateien konfiguriert (imperativ).
+
+Seit ein paar Jahren ist man allerdings dazu übergegangen, diese mit Kotlin-Code unter Verwendung der deklarativen Library Jetpack Compose zu entwickeln (deklarativ).
+
+=== Projekt erstellen
+Geht nach Kapitel 1 vor, um ein neues Projekt zu erstellen.
+Das Projekt sollte "Compose Basics" heißen und wir werden die Vorschau-Funktion verwenden, um die UI-Elemente zu betrachten.
+
+In unserem Projekt, mach ein neues Package und nenne es components.
+Hier werden wir alle Komponenten hinzufügen, die wir erstellen.
+
+Erstelle ein Kotlin File und nenne es UIComponents.kt.
+Innerhalb von UIComponent, erstelle eine composable Funktion, nenne sie EditTextExample() und rufe die OutlinedTextField() Funktion auf.
+Dabei wirst Du aufgefordert, den erforderlichen Import zu importieren, der androidx.Compose.material.OutlinedTextField ist:
+
+[kotlin]
+----
+@Composable
+fun EditTextExample() {
+ OutlinedTextField()
+}
+----
+
+Wenn man sich die Signatur von OutlineTextField() genauer ansieht, bemerkt man neben der @Composable-Annotation, dass sie eine Menge Parameter hat, die alle optional sind und mit einem Default-Wert versehen sind.
+Auf diese Weise können Sie die Felder parametrisieren und an Ihre Bedürfnisse anpassen.
+
+image:android-2-1.png[align="center",width="100%"]
+
+Jetzt, damit wir unsere Methode für unsere Zwecke anpassen können, können wir die Parameter, die wir nicht benötigen, weglassen und nur die verwenden, die wir benötigen.
+Wir werden die folgenden Parameter verwenden:
+Text, color und Modifier, um es zu dekorieren.
+Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel fillMaxWidth(), um die Breite des Textfelds auf die maximale Breite zu setzen.
+Wenn wir fill() aufrufen, wird das Textfeld voll gefüllt. Wir setzen padding(top) auf 16.dp, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.
+
+
+
+IMPORTANT: Hausübung:
+Installieren und auf die neueste Version updaten.
+
+
+== Scrollable List mit Jetpack Compose
+
+== Tab-Layout mit View Pager
+
+== Animationen
+
+== Accessibility
+
+== Declarative Graphics
+
+== Grundlagen Android-Entwicklung

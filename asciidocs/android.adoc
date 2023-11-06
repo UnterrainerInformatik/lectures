@@ -22,8 +22,15 @@ link:https://unterrainerinformatik.github.io/lectures/android-1.html[Android - 1
 * Android Project Structure
 * Deine App mit Gradlew laufen lassen
 
-== Android - 2
+== Jetpack Compose
 link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2 - ]
+
+* Android Views mit Jetpack Compose
+* Scrollable List mit Jetpack Compose
+* Tab-Layout mit View Pager
+* Animationen
+* Accessibility
+* Declarative Graphics
 
 == Android - 3
 link:https://unterrainerinformatik.github.io/lectures/android-3.html[Android - 3 - ]

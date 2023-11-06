@@ -181,22 +181,6 @@ fun compare(a: String, b: String): Boolean = a.length < b.length
 ----
 |===
 
-==== title
-|===
-|Java |Kotlin
-
-a|blah
-[java]
-----
-code
-----
-
-a|blah
-[kotlin]
-----
-code
-----
-|===
 
 === Übung
 Spielwiese unter: link:https://play.kotlinlang.org/koans/overview[https://play.kotlinlang.org/koans/overview]
@@ -327,6 +311,38 @@ class MainActivity : ComponentActivity() {
 
 
 == Android Project Structure
+image:android-1-10.png[align="center",width="50%"]
+Das ist das Projekt-Root-Verzeichnis. Es enthält alle Dateien, die für das Projekt wichtig sind.
+
+=== Manifest Ordner
+Der Manifest-Ordner ist die Quelle der Wahrheit für die Android-App; er enthält AndroidManifest.xml.
+Klicke auf AndroidManifest.xml, um es zu öffnen und Dir den Inhalt anzusehen.
+
+image:android-1-11.png[align="center",width="100%"]
+Das Java-Verzeichnis enthält alle Kotlin- (.kt) und Java-Dateien (.java), die wir erstellen, wenn wir unsere Android-Apps erstellen.
+Beispielsweise, im nächsten Bild, haben wir ein Package mit (androidTest) und (test), und hier fügen wir unsere Tests hinzu.
+Klicke einfach einmal alle Verzeichnisse durch um deren Inhalt zu sehen.
+
+image:android-1-12.png[align="center",width="100%"]
+Im AndroidTest-Verzeichnis haben wir unsere UI-Tests, und im Test-Verzeichnis haben wir unsere Unit-Tests.
+Unit-Tests testen kleine Teile unseres Codes, um sicherzustellen, dass das gewünschte Verhalten wie erwartet ist.
+Test-Driven Development (TDD) ist während der App-Entwicklung hervorragend und wertvoll.
+Einige Unternehmen folgen dieser Regel, andere nicht. Aber grundsätzlich ist es eine gute Praxis, den Code immer zu testen.
+
+Das res-Verzeichnis enthält XML-Layouts, UI-Strings, drawable-Images und Mipmap-Icons.
+Auf der anderen Seite enthält das values-Verzeichnis viele nützliche XML-Dateien wie Dimensionen, Farben und Themes.
+Klicke auf das res-Verzeichnis, um Dich mit dem vertraut zu machen, was dort ist, da wir es im nächsten Kapitel verwenden werden.
+
+image:android-1-13.png[align="center",width="100%"]
+Zuletzt, im Gradle-Scripts Verzeichnis, haben wir die build-Konfiguration, die die beschreiben auf welche Art unser Projekt gebaut werden soll für unser Projekt enthalten.
+Es ist in Module aufgeteilt und die Einträge in der obersten Datei gelten für alle Module.
+
+Ein Modul ist eine Sammlung von Source-Dateien und Build-Einstellungen, die es Dir ermöglichen, Dein Projekt in verschiedene Einheiten mit bestimmten Zwecken zu unterteilen.
 
 == Deine App mit Gradlew laufen lassen
 
+Zuerst mal die installierte Gradle-Version checken mit ./gradlew (GradleWrapper).
+
+Mit ./gradlew clean und ./gradlew build kannst Du Dein Projekt bauen.
+
+Ansonsten kannst Du auch einfach auf den grünen Pfeil in der IDE klicken.
