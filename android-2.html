@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
 <link rel="icon" type="image/png" href="themes/favicon.png">
-<title>Lectures</title>
+<title>Android - Course - 1 - Introduction</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -437,11 +437,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Lectures</h1>
+<h1>Android - Course - 1 - Introduction</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_android_course">1. Android - Course</a></li>
+<li><a href="#_android_views_mit_jetpack_compose">1. Android Views mit Jetpack Compose</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung">1.1. Einleitung</a></li>
+<li><a href="#_projekt_erstellen">1.2. Projekt erstellen</a></li>
+</ul>
+</li>
+<li><a href="#_scrollable_list_mit_jetpack_compose">2. Scrollable List mit Jetpack Compose</a></li>
+<li><a href="#_tab_layout_mit_view_pager">3. Tab-Layout mit View Pager</a></li>
+<li><a href="#_animationen">4. Animationen</a></li>
+<li><a href="#_accessibility">5. Accessibility</a></li>
+<li><a href="#_declarative_graphics">6. Declarative Graphics</a></li>
+<li><a href="#_grundlagen_android_entwicklung">7. Grundlagen Android-Entwicklung</a></li>
 </ul>
 </div>
 </div>
@@ -449,17 +460,117 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class="icon"><a class="image" href="https://raw.githubusercontent.com/UnterrainerInformatik/lectures/main/asciidocs/index.adoc"><i class="fa fa-file-text-o"></i></a></span> ‏ ‏ ‎
-<span class="icon"><a class="image" href="https://github.com/UnterrainerInformatik/lectures"><i class="fa fa-github-square"></i></a></span> ‏ ‏ ‎</p>
+<p><span class="icon"><a class="image" href="https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/android-2.adoc"><i class="fa fa-file-text-o"></i></a></span> ‏ ‏ ‎
+<span class="icon"><a class="image" href="https://github.com/UnterrainerInformatik/documents"><i class="fa fa-github-square"></i></a></span> ‏ ‏ ‎</p>
+</div>
+<div class="paragraph">
+<p><a href="https://unterrainerinformatik.github.io/lectures/android.html">BACK to Android - Course</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_android_course"><a class="anchor" href="#_android_course"></a>1. Android - Course</h2>
+<h2 id="_android_views_mit_jetpack_compose"><a class="anchor" href="#_android_views_mit_jetpack_compose"></a>1. Android Views mit Jetpack Compose</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://unterrainerinformatik.github.io/lectures/android.html">Android - Course</a></p>
+<p><span class="image"><img src="images/android-2-0.png" alt="android 2 0" width="100%"></span></p>
 </div>
+<div class="sect2">
+<h3 id="_einleitung"><a class="anchor" href="#_einleitung"></a>1.1. Einleitung</h3>
+<div class="paragraph">
+<p>Das wichtigste Element bei Android-Apps ist natürlich die GUI.
+Früher hat man die GUI mit Java-Code entwickelt und mit XML-Dateien konfiguriert (imperativ).</p>
+</div>
+<div class="paragraph">
+<p>Seit ein paar Jahren ist man allerdings dazu übergegangen, diese mit Kotlin-Code unter Verwendung der deklarativen Library Jetpack Compose zu entwickeln (deklarativ).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_projekt_erstellen"><a class="anchor" href="#_projekt_erstellen"></a>1.2. Projekt erstellen</h3>
+<div class="paragraph">
+<p>Geht nach Kapitel 1 vor, um ein neues Projekt zu erstellen.
+Das Projekt sollte "Compose Basics" heißen und wir werden die Vorschau-Funktion verwenden, um die UI-Elemente zu betrachten.</p>
+</div>
+<div class="paragraph">
+<p>In unserem Projekt, mach ein neues Package und nenne es components.
+Hier werden wir alle Komponenten hinzufügen, die wir erstellen.</p>
+</div>
+<div class="paragraph">
+<p>Erstelle ein Kotlin File und nenne es UIComponents.kt.
+Innerhalb von UIComponent, erstelle eine composable Funktion, nenne sie EditTextExample() und rufe die OutlinedTextField() Funktion auf.
+Dabei wirst Du aufgefordert, den erforderlichen Import zu importieren, der androidx.Compose.material.OutlinedTextField ist:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Composable
+fun EditTextExample() {
+ OutlinedTextField()
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wenn man sich die Signatur von OutlineTextField() genauer ansieht, bemerkt man neben der @Composable-Annotation, dass sie eine Menge Parameter hat, die alle optional sind und mit einem Default-Wert versehen sind.
+Auf diese Weise können Sie die Felder parametrisieren und an Ihre Bedürfnisse anpassen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-1.png" alt="android 2 1" width="100%"></span></p>
+</div>
+<div class="paragraph">
+<p>Jetzt, damit wir unsere Methode für unsere Zwecke anpassen können, können wir die Parameter, die wir nicht benötigen, weglassen und nur die verwenden, die wir benötigen.
+Wir werden die folgenden Parameter verwenden:
+Text, color und Modifier, um es zu dekorieren.
+Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel fillMaxWidth(), um die Breite des Textfelds auf die maximale Breite zu setzen.
+Wenn wir fill() aufrufen, wird das Textfeld voll gefüllt. Wir setzen padding(top) auf 16.dp, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Hausübung:
+Installieren und auf die neueste Version updaten.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scrollable_list_mit_jetpack_compose"><a class="anchor" href="#_scrollable_list_mit_jetpack_compose"></a>2. Scrollable List mit Jetpack Compose</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tab_layout_mit_view_pager"><a class="anchor" href="#_tab_layout_mit_view_pager"></a>3. Tab-Layout mit View Pager</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_animationen"><a class="anchor" href="#_animationen"></a>4. Animationen</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_accessibility"><a class="anchor" href="#_accessibility"></a>5. Accessibility</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_declarative_graphics"><a class="anchor" href="#_declarative_graphics"></a>6. Declarative Graphics</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grundlagen_android_entwicklung"><a class="anchor" href="#_grundlagen_android_entwicklung"></a>7. Grundlagen Android-Entwicklung</h2>
+<div class="sectionbody">
+
 </div>
 </div>
 </div>

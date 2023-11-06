@@ -468,7 +468,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_mein_erster_knopf_in_jetpack_compose">6.1. Mein erster Knopf in Jetpack-Compose</a></li>
 </ul>
 </li>
-<li><a href="#_android_project_structure">7. Android Project Structure</a></li>
+<li><a href="#_android_project_structure">7. Android Project Structure</a>
+<ul class="sectlevel2">
+<li><a href="#_manifest_ordner">7.1. Manifest Ordner</a></li>
+</ul>
+</li>
 <li><a href="#_deine_app_mit_gradlew_laufen_lassen">8. Deine App mit Gradlew laufen lassen</a></li>
 </ul>
 </div>
@@ -894,41 +898,6 @@ fun compare(a: String, b: String): Boolean = a.length &lt; b.length</pre>
 </tbody>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_title"><a class="anchor" href="#_title"></a>3.2.9. title</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>blah</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>code</pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>blah</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>code</pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_übung"><a class="anchor" href="#_übung"></a>3.3. Übung</h3>
@@ -1173,19 +1142,63 @@ Community" einsetzen und das Programm ausführen (run).</p>
 <div class="sect1">
 <h2 id="_android_project_structure"><a class="anchor" href="#_android_project_structure"></a>7. Android Project Structure</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-10.png" alt="android 1 10" width="50%"></span>
+Das ist das Projekt-Root-Verzeichnis. Es enthält alle Dateien, die für das Projekt wichtig sind.</p>
+</div>
+<div class="sect2">
+<h3 id="_manifest_ordner"><a class="anchor" href="#_manifest_ordner"></a>7.1. Manifest Ordner</h3>
+<div class="paragraph">
+<p>Der Manifest-Ordner ist die Quelle der Wahrheit für die Android-App; er enthält AndroidManifest.xml.
+Klicke auf AndroidManifest.xml, um es zu öffnen und Dir den Inhalt anzusehen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-11.png" alt="android 1 11" width="100%"></span>
+Das Java-Verzeichnis enthält alle Kotlin- (.kt) und Java-Dateien (.java), die wir erstellen, wenn wir unsere Android-Apps erstellen.
+Beispielsweise, im nächsten Bild, haben wir ein Package mit (androidTest) und (test), und hier fügen wir unsere Tests hinzu.
+Klicke einfach einmal alle Verzeichnisse durch um deren Inhalt zu sehen.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-12.png" alt="android 1 12" width="100%"></span>
+Im AndroidTest-Verzeichnis haben wir unsere UI-Tests, und im Test-Verzeichnis haben wir unsere Unit-Tests.
+Unit-Tests testen kleine Teile unseres Codes, um sicherzustellen, dass das gewünschte Verhalten wie erwartet ist.
+Test-Driven Development (TDD) ist während der App-Entwicklung hervorragend und wertvoll.
+Einige Unternehmen folgen dieser Regel, andere nicht. Aber grundsätzlich ist es eine gute Praxis, den Code immer zu testen.</p>
+</div>
+<div class="paragraph">
+<p>Das res-Verzeichnis enthält XML-Layouts, UI-Strings, drawable-Images und Mipmap-Icons.
+Auf der anderen Seite enthält das values-Verzeichnis viele nützliche XML-Dateien wie Dimensionen, Farben und Themes.
+Klicke auf das res-Verzeichnis, um Dich mit dem vertraut zu machen, was dort ist, da wir es im nächsten Kapitel verwenden werden.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-1-13.png" alt="android 1 13" width="100%"></span>
+Zuletzt, im Gradle-Scripts Verzeichnis, haben wir die build-Konfiguration, die die beschreiben auf welche Art unser Projekt gebaut werden soll für unser Projekt enthalten.
+Es ist in Module aufgeteilt und die Einträge in der obersten Datei gelten für alle Module.</p>
+</div>
+<div class="paragraph">
+<p>Ein Modul ist eine Sammlung von Source-Dateien und Build-Einstellungen, die es Dir ermöglichen, Dein Projekt in verschiedene Einheiten mit bestimmten Zwecken zu unterteilen.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_deine_app_mit_gradlew_laufen_lassen"><a class="anchor" href="#_deine_app_mit_gradlew_laufen_lassen"></a>8. Deine App mit Gradlew laufen lassen</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>Zuerst mal die installierte Gradle-Version checken mit ./gradlew (GradleWrapper).</p>
+</div>
+<div class="paragraph">
+<p>Mit ./gradlew clean und ./gradlew build kannst Du Dein Projekt bauen.</p>
+</div>
+<div class="paragraph">
+<p>Ansonsten kannst Du auch einfach auf den grünen Pfeil in der IDE klicken.</p>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-06 11:48:08 UTC
+Last updated 2023-11-06 14:27:52 UTC
 </div>
 </div>
 </body>
