@@ -434,6 +434,120 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
@@ -547,7 +661,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Stellt Hardware-Abstraktionen zur Verfügung. Jede App hat Zugriff auf die Hardware, aber nur über die API.</p>
 </li>
 <li>
-<p>Foundateion. Kümmert sich um threading, low-level memory management, etc&#8230;&#8203;</p>
+<p>Foundation. Kümmert sich um threading, low-level memory management, etc&#8230;&#8203;</p>
 </li>
 </ol>
 </div>
@@ -618,7 +732,7 @@ Seitdem ist die Sprache sehr populär geworden</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>val number: Int</pre>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">val</span> <span class="py">number</span><span class="p">:</span> <span class="nc">Int</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -626,7 +740,7 @@ Seitdem ist die Sprache sehr populär geworden</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>val number: Int? = null</pre>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">val</span> <span class="py">number</span><span class="p">:</span> <span class="nc">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -656,13 +770,13 @@ Seitdem ist die Sprache sehr populär geworden</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>fun String.removeFirstLastChar(): String =  this.substring(1, this.length - 1)
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="k">fun</span> <span class="nc">String</span><span class="p">.</span><span class="nf">removeFirstLastChar</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span>  <span class="k">this</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">length</span> <span class="p">-</span> <span class="mi">1</span><span class="p">)</span>
 
-fun main(args: Array&lt;String&gt;) {
-    val myString= "Hello Everyone"
-    val result = myString.removeFirstLastChar()
-    println("First character is: $result")
-}</pre>
+<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">myString</span><span class="p">=</span> <span class="s">"Hello Everyone"</span>
+    <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">myString</span><span class="p">.</span><span class="nf">removeFirstLastChar</span><span class="p">()</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"First character is: $result"</span><span class="p">)</span>
+<span class="p">}</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -739,18 +853,19 @@ fun main(args: Array&lt;String&gt;) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>fun main() = runBlocking { // this: CoroutineScope
-    launch { // launch a new coroutine and continue
-        delay(1000L) // non-blocking delay for 1 second
-        println("World!") // print after delay
-    }
-    println("Hello") // main coroutine continues
-}
-
-Output:
-Hello
-World!</pre>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">=</span> <span class="nf">runBlocking</span> <span class="p">{</span> <span class="c1">// this: CoroutineScope</span>
+    <span class="nf">launch</span> <span class="p">{</span> <span class="c1">// launch a new coroutine and continue</span>
+        <span class="nf">delay</span><span class="p">(</span><span class="mi">1000L</span><span class="p">)</span> <span class="c1">// non-blocking delay for 1 second</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"World!"</span><span class="p">)</span> <span class="c1">// print after delay</span>
+    <span class="p">}</span>
+    <span class="nf">println</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span> <span class="c1">// main coroutine continues</span>
+<span class="p">}</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Output:
+Hello
+World!</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -881,17 +996,17 @@ World!</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>max(strings, { a, b -&gt; a.length &lt; b.length })
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nf">max</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span> <span class="p">{</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">-&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">length</span> <span class="p">})</span>
 
-/**
+<span class="cm">/**
 The function max is a higher-order function,
 as it takes a function value as its second argument.
 This second argument is an expression that is itself a function,
 called a function literal,
 which is equivalent to the following named function:
-**/
+**/</span>
 
-fun compare(a: String, b: String): Boolean = a.length &lt; b.length</pre>
+<span class="k">fun</span> <span class="nf">compare</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">length</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1084,7 +1199,7 @@ Es hilft dir, ein neues Projekt einzurichten.</p>
 Alternativ kannst Du auch auf File und dann New Project klicken.</p>
 </li>
 <li>
-<p>Klicke auf "Empty Compose Activity" und klicke dann auf Next.</p>
+<p>Klicke auf "Empty Activity" und klicke dann auf Next. (Compose ist inzwischen Standard)</p>
 </li>
 </ol>
 </div>
@@ -1096,7 +1211,8 @@ Alternativ kannst Du auch auf File und dann New Project klicken.</p>
 Für dieses Kapitel nennen wir unser Projekt 'Android Community' und lassen die anderen Einstellung in Ruhe.
 Die Sprache ist per Voreinstellung auf Kotlin.
 Minimum SDK ist API 21: Android 5.0 (Lollipop). Das ist die minimale Version von Android, auf der unsere App laufen können wird.
-In diesem Fall wird unser Projekt auf ca. 98.8% aller Android-Geräte laufen können.</p>
+In diesem Fall wird unser Projekt auf ca. 98.8% aller Android-Geräte laufen können.
+Die Einstellungen im Bild unten, wie der Name und das Package, sind nur Beispiele. Du kannst Deine eigenen Werte eingeben oder es einfach so lassen, wie es voreingestellt ist.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/android-1-9.png" alt="android 1 9" width="100%"></span></p>
@@ -1118,21 +1234,21 @@ Community" einsetzen und das Programm ausführen (run).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState:Bundle?) {
-        super.onCreate(savedInstanceState)
-            setContent {
-                AndroidCommunityTheme {
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colors.background
-                    ) {
-                        Greeting("Hello, Android Community")
-                }
-            }
-        }
-    }
-}</pre>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">ComponentActivity</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+            <span class="nf">setContent</span> <span class="p">{</span>
+                <span class="nc">AndroidCommunityTheme</span> <span class="p">{</span>
+                    <span class="nc">Surface</span><span class="p">(</span>
+                        <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">(),</span>
+                        <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">background</span>
+                    <span class="p">)</span> <span class="p">{</span>
+                        <span class="nc">Greeting</span><span class="p">(</span><span class="s">"Hello, Android Community"</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
 </div>
 </div>
 </div>
@@ -1198,7 +1314,7 @@ Es ist in Module aufgeteilt und die Einträge in der obersten Datei gelten für 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-06 14:27:52 UTC
+Last updated 2024-01-03 21:56:27 UTC
 </div>
 </div>
 </body>

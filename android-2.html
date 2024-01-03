@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
 <link rel="icon" type="image/png" href="themes/favicon.png">
-<title>Android - Course - 1 - Introduction</title>
+<title>Android - Course - 2 - Jetpack Compose</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -434,25 +434,176 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Android - Course - 1 - Introduction</h1>
+<h1>Android - Course - 2 - Jetpack Compose</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_android_views_mit_jetpack_compose">1. Android Views mit Jetpack Compose</a>
 <ul class="sectlevel2">
 <li><a href="#_einleitung">1.1. Einleitung</a></li>
-<li><a href="#_projekt_erstellen">1.2. Projekt erstellen</a></li>
+<li><a href="#_programm">1.2. Programm</a></li>
+<li><a href="#_funktionsweise">1.3. Funktionsweise</a></li>
 </ul>
 </li>
-<li><a href="#_scrollable_list_mit_jetpack_compose">2. Scrollable List mit Jetpack Compose</a></li>
-<li><a href="#_tab_layout_mit_view_pager">3. Tab-Layout mit View Pager</a></li>
-<li><a href="#_animationen">4. Animationen</a></li>
-<li><a href="#_accessibility">5. Accessibility</a></li>
-<li><a href="#_declarative_graphics">6. Declarative Graphics</a></li>
-<li><a href="#_grundlagen_android_entwicklung">7. Grundlagen Android-Entwicklung</a></li>
+<li><a href="#_scrollable_list_mit_jetpack_compose">2. Scrollable List mit Jetpack Compose</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung_2">2.1. Einleitung</a></li>
+<li><a href="#_programm_2">2.2. Programm</a></li>
+<li><a href="#_funktionsweise_2">2.3. Funktionsweise</a></li>
+</ul>
+</li>
+<li><a href="#_tab_layout_mit_view_pager">3. Tab-Layout mit View Pager</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung_3">3.1. Einleitung</a></li>
+<li><a href="#_programm_3">3.2. Programm</a></li>
+<li><a href="#_funktionsweise_3">3.3. Funktionsweise</a></li>
+</ul>
+</li>
+<li><a href="#_animationen">4. Animationen</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung_4">4.1. Einleitung</a></li>
+<li><a href="#_programm_4">4.2. Programm</a></li>
+<li><a href="#_funktionsweise_4">4.3. Funktionsweise</a></li>
+</ul>
+</li>
+<li><a href="#_accessibility">5. Accessibility</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung_5">5.1. Einleitung</a></li>
+<li><a href="#_programm_5">5.2. Programm</a></li>
+<li><a href="#_funktionsweise_5">5.3. Funktionsweise</a></li>
+</ul>
+</li>
+<li><a href="#_declarative_graphics">6. Declarative Graphics</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung_6">6.1. Einleitung</a></li>
+<li><a href="#_programm_6">6.2. Programm</a></li>
+<li><a href="#_funktionsweise_6">6.3. Funktionsweise</a></li>
+</ul>
+</li>
+<li><a href="#_grundlagen_android_entwicklung">7. Grundlagen Android-Entwicklung</a>
+<ul class="sectlevel2">
+<li><a href="#_einleitung_7">7.1. Einleitung</a></li>
+<li><a href="#_programm_7">7.2. Programm</a></li>
+<li><a href="#_funktionsweise_7">7.3. Funktionsweise</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -485,42 +636,46 @@ Früher hat man die GUI mit Java-Code entwickelt und mit XML-Dateien konfigurier
 </div>
 </div>
 <div class="sect2">
-<h3 id="_projekt_erstellen"><a class="anchor" href="#_projekt_erstellen"></a>1.2. Projekt erstellen</h3>
+<h3 id="_programm"><a class="anchor" href="#_programm"></a>1.2. Programm</h3>
 <div class="paragraph">
 <p>Geht nach Kapitel 1 vor, um ein neues Projekt zu erstellen.
 Das Projekt sollte "Compose Basics" heißen und wir werden die Vorschau-Funktion verwenden, um die UI-Elemente zu betrachten.</p>
 </div>
-<div class="paragraph">
-<p>In unserem Projekt, mach ein neues Package und nenne es components.
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In unserem Projekt, mach ein neues Package und nenne es <code>components</code>.
 Hier werden wir alle Komponenten hinzufügen, die wir erstellen.</p>
-</div>
-<div class="paragraph">
-<p>Erstelle ein Kotlin File und nenne es UIComponents.kt.
-Innerhalb von UIComponent, erstelle eine composable Funktion, nenne sie EditTextExample() und rufe die OutlinedTextField() Funktion auf.
+</li>
+<li>
+<p>Erstelle ein Kotlin File und nenne es <code>UiComponents.kt</code>.
+Innerhalb von UIComponent, erstelle eine composable Funktion, nenne sie <code>EditTextExample()</code> und rufe die <code>OutlinedTextField()</code> Funktion auf.
 Dabei wirst Du aufgefordert, den erforderlichen Import zu importieren, der androidx.Compose.material.OutlinedTextField ist:</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>@Composable
-fun EditTextExample() {
- OutlinedTextField()
-}</pre>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">EditTextExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="nc">OutlinedTextField</span><span class="p">()</span>
+<span class="p">}</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
+</li>
+<li>
 <p>Wenn man sich die Signatur von OutlineTextField() genauer ansieht, bemerkt man neben der @Composable-Annotation, dass sie eine Menge Parameter hat, die alle optional sind und mit einem Default-Wert versehen sind.
 Auf diese Weise können Sie die Felder parametrisieren und an Ihre Bedürfnisse anpassen.</p>
-</div>
 <div class="paragraph">
 <p><span class="image"><img src="images/android-2-1.png" alt="android 2 1" width="100%"></span></p>
 </div>
-<div class="paragraph">
+</li>
+<li>
+<p>Für dieses Beispiel werden wir nicht viel mit DU machen, die wir erstellen. Wir wollen nur zeigen wie man sie grundsätzlich erstellt.</p>
+</li>
+<li>
 <p>Jetzt, damit wir unsere Methode für unsere Zwecke anpassen können, können wir die Parameter, die wir nicht benötigen, weglassen und nur die verwenden, die wir benötigen.
 Wir werden die folgenden Parameter verwenden:
-Text, color und Modifier, um es zu dekorieren.
-Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel fillMaxWidth(), um die Breite des Textfelds auf die maximale Breite zu setzen.
-Wenn wir fill() aufrufen, wird das Textfeld voll gefüllt. Wir setzen padding(top) auf 16.dp, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.</p>
-</div>
+<code>Text</code>, <code>Color</code> und <code>Modifier</code>, um es zu dekorieren.
+Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel <code>fillMaxWidth()</code>, um die Breite des Textfelds auf die maximale Breite zu setzen.
+Wenn wir <code>fill()</code> aufrufen, wird das Textfeld voll gefüllt. Wir setzen <code>padding(top)</code> auf <code>16.dp</code>, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -534,49 +689,429 @@ Installieren und auf die neueste Version updaten.
 </tr>
 </table>
 </div>
+</li>
+<li>
+<p>Wir weisen unserem <code>OutlinedText</code> auch Randfarben zu, wenn er fokussiert und nicht fokussiert ist, um verschiedene Zustände darzustellen. Wenn Sie also mit der Eingabe beginnen, ändert sich die Boxfarbe zu Blau, wie im Code angegeben:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@OptIn</span><span class="p">(</span><span class="nc">ExperimentalMaterial3Api</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+<span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">EditTextExample</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">OutlinedTextField</span><span class="p">(</span>
+        <span class="n">value</span> <span class="p">=</span> <span class="s">""</span><span class="p">,</span>
+        <span class="n">onValueChange</span> <span class="p">=</span> <span class="p">{},</span>
+        <span class="n">label</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">Text</span><span class="p">(</span><span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">sample</span><span class="p">))</span> <span class="p">},</span>
+        <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+            <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">top</span> <span class="p">=</span> <span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
+        <span class="n">colors</span> <span class="p">=</span> <span class="nc">TextFieldDefaults</span><span class="p">.</span><span class="nf">outlinedTextFieldColors</span><span class="p">(</span>
+            <span class="n">focusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Blue</span><span class="p">,</span>
+            <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Importiere alle notwendigen Libraries und definiere R.string.sample mit einem beliebigen Wert.</p>
+</div>
+</li>
+<li>
+<p>Wir haben auch einen anderen Typ von <code>TextField</code>, der nicht umrandet ist. Wenn Sie die Eingabeparameter von <code>OutlinedTextField</code> vergleichen, werden Sie feststellen, dass sie ziemlich ähnlich sind:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@OptIn</span><span class="p">(</span><span class="nc">ExperimentalMaterial3Api</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
+<span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">NotOutlinedEditTextExample</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">TextField</span><span class="p">(</span>
+        <span class="n">value</span> <span class="p">=</span> <span class="s">""</span><span class="p">,</span>
+        <span class="n">onValueChange</span> <span class="p">=</span> <span class="p">{},</span>
+        <span class="n">label</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">Text</span><span class="p">(</span><span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">sample</span><span class="p">))</span> <span class="p">},</span>
+        <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+            <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">top</span> <span class="p">=</span> <span class="mi">100</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
+        <span class="n">colors</span> <span class="p">=</span> <span class="nc">TextFieldDefaults</span><span class="p">.</span><span class="nf">outlinedTextFieldColors</span><span class="p">(</span>
+            <span class="n">focusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Blue</span><span class="p">,</span>
+            <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Sie können die Anwendung ausführen, indem Sie die Compose-Funktionen innerhalb der <code>@Preview</code>-Compose-Funktion hinzufügen. In unserem Beispiel können wir <code>UIElementPreview()</code> in der gleichen Klasse erstellen, was eine Vorschau-Funktion ist, um unsere Benutzeroberfläche anzuzeigen. In der nächsten Abbildung ist die obere Ansicht ein <code>OutlinedTextField</code>, während die zweite ein normales <code>TextField</code> ist.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Preview</span><span class="p">(</span><span class="n">showBackground</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+<span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">UiElementPreview</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">MyApplicationTheme</span> <span class="p">{</span>
+        <span class="nc">EditTextExample</span><span class="p">()</span>
+        <span class="nc">NotOutlinedEditTextExample</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-2.png" alt="android 2 2"></span></p>
+</div>
+</li>
+<li>
+<p>Jetzt schauen wir uns Beispiele für Schaltflächen an. Wir werden verschiedene Möglichkeiten betrachten, Schaltflächen mit unterschiedlichen Formen zu erstellen. Wenn Sie mit der Maus über der Button()-Compose-Funktion schweben, sehen Sie, welche Eingabe sie akzeptiert, wie in der nächsten Abbildung dargestellt.</p>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-3.png" alt="android 2 3"></span></p>
+</div>
+<div class="paragraph">
+<p>In unserem zweiten Beispiel werden wir versuchen, eine Schaltfläche mit einem Symbol darauf zu erstellen. Darüber hinaus werden wir Text hinzufügen, was entscheidend ist, wenn Schaltflächen erstellt werden, da wir den Benutzern angeben müssen, welche Aktion die Schaltfläche ausführt oder was passieren wird, wenn sie darauf geklickt wird.</p>
+</div>
+</li>
+<li>
+<p>Gehen Sie also voran und erstellen Sie eine Compose-Funktion in der gleichen Kotlin-Datei und nennen Sie sie <code>ButtonWithIcon()</code>. Importieren Sie dann die <code>Button()</code>-Compose-Funktion.</p>
+</li>
+<li>
+<p>Innerhalb dieser Funktion müssen Sie ein <code>Icon()</code> mit <code>painterResource</code>-Eingabe, einer <code>contentDescription</code>, einem <code>Modifier</code> und <code>tint</code> importieren. Wir benötigen auch <code>Text()</code>, der unserer Schaltfläche einen Namen gibt. In unserem Beispiel werden wir <code>tint</code> nicht verwenden:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">ButtonWithIcon</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nc">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{})</span> <span class="p">{</span>
+    <span class="nc">Icon</span><span class="p">(</span>
+      <span class="nf">painterResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ic_baseline_shopping_bag_24</span><span class="p">),</span>
+      <span class="n">contentDescription</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">shop</span><span class="p">),</span>
+      <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">20</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nc">Text</span><span class="p">(</span><span class="n">text</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">buy</span><span class="p">),</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">start</span> <span class="p">=</span> <span class="mi">10</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Erstellen Sie eine neue Compose-Funktion und nennen Sie sie <code>CornerCutShapeButton()</code>. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit abgeschnittenen Ecken zu erstellen:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">CornerCutShapeButton</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nc">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{},</span> <span class="n">shape</span> <span class="p">=</span> <span class="nc">CutCornerShape</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nc">Text</span><span class="p">(</span><span class="n">text</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">cornerButton</span><span class="p">))</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Erstellen Sie eine neue Compose-Funktion und nennen Sie sie <code>RoundCornerShapeButton()</code>. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit abgerundeten Ecken zu erstellen:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">RoundCornerShapeButton</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nc">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{},</span> <span class="n">shape</span> <span class="p">=</span> <span class="nc">RoundedCornerShape</span><span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nc">Text</span><span class="p">(</span><span class="n">text</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">rounded</span><span class="p">))</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Erstellen Sie eine neue Compose-Funktion und nennen Sie sie <code>ElevatedButtonExample()</code>. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit Erhebung zu erstellen:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">ElevatedButtonExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nc">Button</span><span class="p">(</span>
+    <span class="n">onClick</span> <span class="p">=</span> <span class="p">{},</span>
+    <span class="n">elevation</span> <span class="p">=</span> <span class="nc">ButtonDefaults</span><span class="p">.</span><span class="nf">elevation</span><span class="p">(</span>
+      <span class="n">defaultElevation</span> <span class="p">=</span> <span class="mi">8</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span>
+      <span class="n">pressedElevation</span> <span class="p">=</span> <span class="mi">10</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span>
+      <span class="n">disabledElevation</span> <span class="p">=</span> <span class="mi">0</span><span class="p">.</span><span class="n">dp</span>
+    <span class="p">)</span>
+  <span class="p">)</span> <span class="p">{</span>
+    <span class="nc">Text</span><span class="p">(</span><span class="n">text</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">elevated</span><span class="p">))</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Nachdem Sie die Anwendung gestartet haben, sollte ein Bild ähnlich wie in der nächsten Abbildung erscheinen. Die erste Schaltfläche nach dem TextField ist <code>ButtonWithIcon()</code>, die zweite ist <code>CornerCutShapeButton()</code>, die dritte ist <code>RoundCornerShapeButton()</code>, und schließlich haben wir <code>ElevatedButtonExample()</code>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-4.png" alt="android 2 4"></span></p>
+</div>
+</li>
+<li>
+<p>Schauen wir uns nun ein letztes Beispiel an, da wir im Laufe des Buchs verschiedene Ansichten und Stile verwenden und dabei mehr lernen werden. Lassen Sie uns jetzt eine Bildansicht betrachten; die <code>Image()</code>-Compose-Funktion akzeptiert mehrere Eingaben, wie in der nächsten Abbildung dargestellt.</p>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-5.png" alt="android 2 5"></span></p>
+</div>
+</li>
+<li>
+<p>In unserem Beispiel wird die <code>Image()</code> nur einen <code>painter</code> haben, der nicht null sein kann, was bedeutet, dass Sie ein Bild für diese Compose-Funktion bereitstellen müssen, eine Inhaltsbeschreibung für die Barrierefreiheit und einen Modifier:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">ImageViewExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nc">Image</span><span class="p">(</span>
+    <span class="nf">painterResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">android</span><span class="p">),</span>
+    <span class="n">contentDescription</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">image</span><span class="p">),</span>
+    <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">200</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Sie können auch versuchen, mit anderen Dingen zu experimentieren, wie zum Beispiel das Hinzufügen von <code>RadioButton()</code>- und <code>CheckBox()</code>-Elementen und deren Anpassung.
+Wenn Sie Ihre Anwendung ausführen, sollte das Ergebnis etwas Ähnliches wie in der nächsten Abbildung sein.</p>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-6.png" alt="android 2 6"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise"><a class="anchor" href="#_funktionsweise"></a>1.3. Funktionsweise</h3>
+<div class="paragraph">
+<p>Jede Compose-Funktion ist mit der <code>@Composable</code>-Annotation versehen. Diese Annotation teilt dem Compose-Compiler mit, dass der bereitgestellte Compiler dazu bestimmt ist, die bereitgestellten Daten in eine Benutzeroberfläche umzuwandeln. Es ist auch wichtig zu beachten, dass der Name jeder Compose-Funktion ein Nomen sein muss und kein Verb oder Adjektiv sein darf. Google stellt diese Richtlinien bereit.
+Jede von Ihnen erstellte Compose-Funktion kann Parameter akzeptieren, die es der App-Logik ermöglichen, Ihre Benutzeroberfläche zu beschreiben oder zu ändern.</p>
+</div>
+<div class="paragraph">
+<p>Wir erwähnen den Compose-Compiler, was bedeutet, dass dieser Compiler irgendein spezielles Programm ist, das den von uns geschriebenen Code analysiert und ihn in etwas übersetzt, das der Computer verstehen kann – oder Maschinensprache.</p>
+</div>
+<div class="paragraph">
+<p>In <code>Icon()</code> gibt <code>painterResouce</code> das Symbol an, das wir der Schaltfläche hinzufügen werden. <code>contentDescription</code> hilft bei der Barrierefreiheit, und der <code>modifier</code> wird verwendet, um unser Symbol zu dekorieren.</p>
+</div>
+<div class="paragraph">
+<p>Wir können die erstellten UI-Elemente vorab anzeigen, indem wir die @Preview-Annotation hinzufügen und <code>showBackground = true</code> setzen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Preview</span><span class="p">(</span><span class="n">showBackground</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>+
+<code>@Preview</code> ist sehr mächtig und wir werden uns die richtige Verwendung in späteren Kapiteln genauer ansehen.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_scrollable_list_mit_jetpack_compose"><a class="anchor" href="#_scrollable_list_mit_jetpack_compose"></a>2. Scrollable List mit Jetpack Compose</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-7.png" alt="android 2 7"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_einleitung_2"><a class="anchor" href="#_einleitung_2"></a>2.1. Einleitung</h3>
+<div class="paragraph">
+<p>Beim Erstellen von Android-Anwendungen sind wir uns alle einig, dass Sie wissen müssen, wie Sie eine <code>RecyclerView</code> erstellen, um Ihre Daten anzuzeigen. Mit unserer neuen, modernen Art, Android-Anwendungen zu erstellen, können wir <code>LazyColumn</code> verwenden, was sich ähnlich verhält.
+In diesem Rezept werden wir uns Zeilen, Spalten und <code>LazyColumn</code> ansehen und eine scrollbare Liste mit unseren Dummy-Daten erstellen.
+Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
+</div>
+<div class="paragraph">
+<p>Wir werden das Projekt Compose Basics weiterhin verwenden, um eine scrollbare Liste zu erstellen. Daher müssen Sie die vorherige Anleitung abgeschlossen haben, um zu beginnen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_programm_2"><a class="anchor" href="#_programm_2"></a>2.2. Programm</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Lassen Sie uns jetzt unsere erste scrollbare Liste erstellen. Zuerst brauchen wir jedoch Dummy-Daten, die in unserer Liste angezeigt werden sollen. Erstellen Sie daher ein Paket namens <code>favoritecity</code>, in dem unser scrollbares Beispiel leben wird.</p>
+</li>
+<li>
+<p>Innerhalb des Pakets <code>favoritecity</code> erstellen Sie eine neue Datenklasse und nennen Sie sie <code>City</code>; dies wird unsere Dummy-Datenquelle sein - <code>data class City()</code>.</p>
+</li>
+<li>
+<p>Modellieren wir unsere City-Datenklasse. Stellen Sie sicher, dass Sie die erforderlichen Imports hinzufügen, sobald Sie die annotierten Werte hinzugefügt haben:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">data class</span> <span class="nc">City</span><span class="p">(</span>
+ <span class="kd">val</span> <span class="py">id</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+ <span class="nd">@StringRes</span> <span class="kd">val</span> <span class="py">nameResourceId</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+ <span class="nd">@DrawableRes</span> <span class="kd">val</span> <span class="py">imageResourceId</span><span class="p">:</span> <span class="nc">Int</span>
+<span class="p">)</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Jetzt müssen wir in unseren Dummy-Daten eine Kotlin-Klasse erstellen und diese Klasse <code>CityDataSource</code> nennen. In dieser Klasse werden wir eine Funktion namens <code>loadCities()</code> erstellen, die unsere Liste von <code>List&lt;City&gt;</code> zurückgibt, die wir in unserer scrollbaren Liste anzeigen werden.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">class</span> <span class="nc">CityDataSource</span> <span class="p">{</span>
+ <span class="k">fun</span> <span class="nf">loadCities</span><span class="p">():</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">City</span><span class="p">&gt;</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="nf">listOf</span><span class="p">(</span>
+ <span class="nc">City</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">spain</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">spain</span><span class="p">),</span>
+ <span class="nc">City</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">new_york</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">newyork</span><span class="p">),</span>
+ <span class="nc">City</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">tokyo</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">tokyo</span><span class="p">),</span>
+ <span class="nc">City</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">switzerland</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">switzerland</span><span class="p">),</span>
+ <span class="nc">City</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">singapore</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">singapore</span><span class="p">),</span>
+ <span class="nc">City</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">paris</span><span class="p">,</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">paris</span><span class="p">),</span>
+ <span class="p">)</span>
+ <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Jetzt haben wir unsere Dummy-Daten, und es ist Zeit, diese in unserer scrollbaren Liste anzuzeigen. Erstellen Sie eine neue Kotlin-Datei in unserem <code>components</code>-Paket und nennen Sie sie <code>CityComponents</code>. In <code>CityComponents</code> erstellen wir unsere <code>@Preview</code>-Funktion:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Preview</span><span class="p">(</span><span class="n">showBackground</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+<span class="nd">@Composable</span>
+<span class="k">private</span> <span class="k">fun</span> <span class="nf">CityCardPreview</span><span class="p">()</span> <span class="p">{</span>
+ <span class="nc">CityApp</span><span class="p">()</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Innerhalb unserer <code>@Preview</code>-Funktion haben wir eine weitere Compose-Funktion, <code>CityApp()</code>; innerhalb dieser Funktion rufen wir unsere <code>CityList</code>-Compose-Funktion auf, die die Liste als Parameter hat. In dieser Compose-Funktion rufen wir außerdem <code>LazyColumn</code> auf, und items wird <code>CityCard(cities)</code> sein. Weitere Erläuterungen zu <code>LazyColumn</code> und items finden Sie im Abschnitt "Funktionsweise":</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">CityList</span><span class="p">(</span><span class="n">cityList</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">City</span><span class="p">&gt;)</span> <span class="p">{</span>
+ <span class="nc">LazyColumn</span> <span class="p">{</span>
+ <span class="nf">items</span><span class="p">(</span><span class="n">cityList</span><span class="p">)</span> <span class="p">{</span> <span class="n">cities</span> <span class="p">-&gt;</span>
+ <span class="nc">CityCard</span><span class="p">(</span><span class="n">cities</span><span class="p">)</span>
+ <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Schließlich erstellen wir unsere <code>CityCard(city)</code>-Compose-Funktion:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">CityCard</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nc">City</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nc">Card</span><span class="p">(</span><span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
+ <span class="n">elevation</span> <span class="p">=</span> <span class="mi">4</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span> <span class="p">{</span>
+ <span class="nc">Column</span> <span class="p">{</span>
+ <span class="nc">Image</span><span class="p">(</span>
+ <span class="n">painter</span> <span class="p">=</span> <span class="nf">painterResource</span><span class="p">(</span><span class="n">city</span><span class="p">.</span><span class="n">imageResourceId</span><span class="p">),</span>
+ <span class="n">contentDescription</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">city</span><span class="p">.</span><span class="n">nameResourceId</span><span class="p">),</span>
+ <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
+ <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
+ <span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="mi">154</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
+ <span class="n">contentScale</span> <span class="p">=</span> <span class="nc">ContentScale</span><span class="p">.</span><span class="nc">Crop</span>
+ <span class="p">)</span>
+ <span class="nc">Text</span><span class="p">(</span>
+ <span class="n">text</span> <span class="p">=</span> <span class="nc">LocalContext</span><span class="p">.</span><span class="n">current</span><span class="p">.</span><span class="nf">getString</span><span class="p">(</span><span class="n">city</span><span class="p">.</span><span class="n">nameResourceId</span><span class="p">),</span>
+ <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
+ <span class="n">style</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">typography</span><span class="p">.</span><span class="n">h5</span>
+ <span class="p">)</span>
+ <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wenn Sie die <code>CityCardPreview</code>-Komponierfunktion ausführen, sollte eine scrollbare Liste erstellt werden, wie in der nächsten Abbildung zu sehen ist.
+<span class="image"><img src="images/android-2-7.png" alt="android 2 7"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise_2"><a class="anchor" href="#_funktionsweise_2"></a>2.3. Funktionsweise</h3>
 
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_tab_layout_mit_view_pager"><a class="anchor" href="#_tab_layout_mit_view_pager"></a>3. Tab-Layout mit View Pager</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_einleitung_3"><a class="anchor" href="#_einleitung_3"></a>3.1. Einleitung</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_programm_3"><a class="anchor" href="#_programm_3"></a>3.2. Programm</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise_3"><a class="anchor" href="#_funktionsweise_3"></a>3.3. Funktionsweise</h3>
+
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_animationen"><a class="anchor" href="#_animationen"></a>4. Animationen</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_einleitung_4"><a class="anchor" href="#_einleitung_4"></a>4.1. Einleitung</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_programm_4"><a class="anchor" href="#_programm_4"></a>4.2. Programm</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise_4"><a class="anchor" href="#_funktionsweise_4"></a>4.3. Funktionsweise</h3>
+
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_accessibility"><a class="anchor" href="#_accessibility"></a>5. Accessibility</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_einleitung_5"><a class="anchor" href="#_einleitung_5"></a>5.1. Einleitung</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_programm_5"><a class="anchor" href="#_programm_5"></a>5.2. Programm</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise_5"><a class="anchor" href="#_funktionsweise_5"></a>5.3. Funktionsweise</h3>
+
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_declarative_graphics"><a class="anchor" href="#_declarative_graphics"></a>6. Declarative Graphics</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_einleitung_6"><a class="anchor" href="#_einleitung_6"></a>6.1. Einleitung</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_programm_6"><a class="anchor" href="#_programm_6"></a>6.2. Programm</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise_6"><a class="anchor" href="#_funktionsweise_6"></a>6.3. Funktionsweise</h3>
+
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_grundlagen_android_entwicklung"><a class="anchor" href="#_grundlagen_android_entwicklung"></a>7. Grundlagen Android-Entwicklung</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_einleitung_7"><a class="anchor" href="#_einleitung_7"></a>7.1. Einleitung</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_programm_7"><a class="anchor" href="#_programm_7"></a>7.2. Programm</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_funktionsweise_7"><a class="anchor" href="#_funktionsweise_7"></a>7.3. Funktionsweise</h3>
+
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-06 14:27:52 UTC
+Last updated 2024-01-03 21:56:27 UTC
 </div>
 </div>
 </body>
