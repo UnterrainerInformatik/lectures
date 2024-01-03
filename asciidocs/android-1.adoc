@@ -1,6 +1,7 @@
 = Android - Course - 1 - Introduction
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
+:source-highlighter: highlight.js
 :experimental:
 :sectnums:
 :toc:
@@ -35,7 +36,7 @@ image:android-1-2.png[align="center",width="50%"]
 . UI Komponenten, Ressourcen-Management, Lifecycle-Management. Stellt native Bibliotheken für die App zur Verfügung.
 . Jede App läuft in ihrer eigenen Instanz der Android Runtime.
 . Stellt Hardware-Abstraktionen zur Verfügung. Jede App hat Zugriff auf die Hardware, aber nur über die API.
-. Foundateion. Kümmert sich um threading, low-level memory management, etc...
+. Foundation. Kümmert sich um threading, low-level memory management, etc...
 
 == Android Studio IDE
 Installation unter: link:https://developer.android.com/studio/install[https://developer.android.com/studio/install]
@@ -62,12 +63,12 @@ public Integer number;
 ----
 
 a|Kein Objekt kann null werden
-[kotlin]
+[source,kotlin]
 ----
 val number: Int
 ----
 ...außer man gibt es so an:
-[kotlin]
+[source,kotlin]
 ----
 val number: Int? = null
 ----
@@ -80,7 +81,7 @@ val number: Int? = null
 a|Ohne Erweiterung (z.B. Project Lombok) nicht verfügbar. (Ev. noch über Vererbung... Aber nicht jedes zu erweiternde Projekt gehört auch euch.)
 
 a|Standardmäßig in die Sprache eingebaut. Einfach den Funktionsnamen in jedem beliebigen File mit dem jeweiligen Klassennamen prefixen.
-[kotlin]
+[source,kotlin]
 ----
 fun String.removeFirstLastChar(): String =  this.substring(1, this.length - 1)
 
@@ -111,7 +112,8 @@ a|Background Threads. (z.B.: ExecutorService)
 
 a|* Eigener Threadpool
 * In Sprache fix eingebaut
-[kotlin]
+
+[source,kotlin]
 ----
 fun main() = runBlocking { // this: CoroutineScope
     launch { // launch a new coroutine and continue
@@ -120,11 +122,12 @@ fun main() = runBlocking { // this: CoroutineScope
     }
     println("Hello") // main coroutine continues
 }
+----
 
 Output:
 Hello
 World!
-----
+
 |===
 
 ==== Data Classes
@@ -165,7 +168,8 @@ a|Es gibt keine checked Exceptions.
 
 a|In abgespeckter Form verfügbar oder mit alten Sprachkonstrukten nachgebaut.
 a|Inherent in Sprache enthalten.
-[kotlin]
+
+[source,kotlin]
 ----
 max(strings, { a, b -> a.length < b.length })
 
@@ -266,7 +270,7 @@ Schritt für Schritt werden wir unsere erste Android-App erstellen und sie auf d
 2. Wenn Android Studio startet, klicke auf "Start a new Android Studio project" am Welcome-Screen.
 Alternativ kannst Du auch auf File und dann New Project klicken.
 
-3. Klicke auf "Empty Compose Activity" und klicke dann auf Next.
+3. Klicke auf "Empty Activity" und klicke dann auf Next. (Compose ist inzwischen Standard)
 
 image:android-1-8.png[align="center",width="100%"]
 
@@ -275,6 +279,7 @@ Für dieses Kapitel nennen wir unser Projekt 'Android Community' und lassen die 
 Die Sprache ist per Voreinstellung auf Kotlin.
 Minimum SDK ist API 21: Android 5.0 (Lollipop). Das ist die minimale Version von Android, auf der unsere App laufen können wird.
 In diesem Fall wird unser Projekt auf ca. 98.8% aller Android-Geräte laufen können.
+Die Einstellungen im Bild unten, wie der Name und das Package, sind nur Beispiele. Du kannst Deine eigenen Werte eingeben oder es einfach so lassen, wie es voreingestellt ist.
 
 image:android-1-9.png[align="center",width="100%"]
 
@@ -289,7 +294,7 @@ Sie nimmt einen Lambda-Ausdruck, die die Elemente enthält, die angezeigt werden
 In der 'Greeting' Funktion werden wir jetzt unsere eigene Grußformel "Hello, Android 
 Community" einsetzen und das Programm ausführen (run).
 
-[kotlin]
+[source,kotlin]
 ----
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState:Bundle?) {

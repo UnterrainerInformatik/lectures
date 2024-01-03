@@ -1,6 +1,7 @@
-= Android - Course - 1 - Introduction
+= Android - Course - 2 - Jetpack Compose
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
+:source-highlighter: highlight.js
 :experimental:
 :sectnums:
 :toc:
@@ -22,50 +23,348 @@ Früher hat man die GUI mit Java-Code entwickelt und mit XML-Dateien konfigurier
 
 Seit ein paar Jahren ist man allerdings dazu übergegangen, diese mit Kotlin-Code unter Verwendung der deklarativen Library Jetpack Compose zu entwickeln (deklarativ).
 
-=== Projekt erstellen
+=== Programm
 Geht nach Kapitel 1 vor, um ein neues Projekt zu erstellen.
 Das Projekt sollte "Compose Basics" heißen und wir werden die Vorschau-Funktion verwenden, um die UI-Elemente zu betrachten.
 
-In unserem Projekt, mach ein neues Package und nenne es components.
+. In unserem Projekt, mach ein neues Package und nenne es `components`.
 Hier werden wir alle Komponenten hinzufügen, die wir erstellen.
 
-Erstelle ein Kotlin File und nenne es UIComponents.kt.
-Innerhalb von UIComponent, erstelle eine composable Funktion, nenne sie EditTextExample() und rufe die OutlinedTextField() Funktion auf.
+. Erstelle ein Kotlin File und nenne es `UiComponents.kt`.
+Innerhalb von UIComponent, erstelle eine composable Funktion, nenne sie `EditTextExample()` und rufe die `OutlinedTextField()` Funktion auf.
 Dabei wirst Du aufgefordert, den erforderlichen Import zu importieren, der androidx.Compose.material.OutlinedTextField ist:
-
-[kotlin]
++
+[source,kotlin]
 ----
 @Composable
 fun EditTextExample() {
- OutlinedTextField()
+OutlinedTextField()
 }
 ----
-
-Wenn man sich die Signatur von OutlineTextField() genauer ansieht, bemerkt man neben der @Composable-Annotation, dass sie eine Menge Parameter hat, die alle optional sind und mit einem Default-Wert versehen sind.
++
+. Wenn man sich die Signatur von OutlineTextField() genauer ansieht, bemerkt man neben der @Composable-Annotation, dass sie eine Menge Parameter hat, die alle optional sind und mit einem Default-Wert versehen sind.
 Auf diese Weise können Sie die Felder parametrisieren und an Ihre Bedürfnisse anpassen.
-
++
 image:android-2-1.png[align="center",width="100%"]
-
-Jetzt, damit wir unsere Methode für unsere Zwecke anpassen können, können wir die Parameter, die wir nicht benötigen, weglassen und nur die verwenden, die wir benötigen.
++
+. Für dieses Beispiel werden wir nicht viel mit DU machen, die wir erstellen. Wir wollen nur zeigen wie man sie grundsätzlich erstellt.
+. Jetzt, damit wir unsere Methode für unsere Zwecke anpassen können, können wir die Parameter, die wir nicht benötigen, weglassen und nur die verwenden, die wir benötigen.
 Wir werden die folgenden Parameter verwenden:
-Text, color und Modifier, um es zu dekorieren.
-Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel fillMaxWidth(), um die Breite des Textfelds auf die maximale Breite zu setzen.
-Wenn wir fill() aufrufen, wird das Textfeld voll gefüllt. Wir setzen padding(top) auf 16.dp, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.
-
-
-
+`Text`, `Color` und `Modifier`, um es zu dekorieren.
+Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel `fillMaxWidth()`, um die Breite des Textfelds auf die maximale Breite zu setzen.
+Wenn wir `fill()` aufrufen, wird das Textfeld voll gefüllt. Wir setzen `padding(top)` auf `16.dp`, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.
++
 IMPORTANT: Hausübung:
 Installieren und auf die neueste Version updaten.
++
+. Wir weisen unserem `OutlinedText` auch Randfarben zu, wenn er fokussiert und nicht fokussiert ist, um verschiedene Zustände darzustellen. Wenn Sie also mit der Eingabe beginnen, ändert sich die Boxfarbe zu Blau, wie im Code angegeben:
++
+[source,kotlin]
+----
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EditTextExample() {
+    OutlinedTextField(
+        value = "",
+        onValueChange = {},
+        label = { Text(stringResource(id = R.string.sample)) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 16.dp),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color.Blue,
+            unfocusedBorderColor = Color.Black
+        )
+    )
+}
+----
++
+Importiere alle notwendigen Libraries und definiere R.string.sample mit einem beliebigen Wert.
+. Wir haben auch einen anderen Typ von `TextField`, der nicht umrandet ist. Wenn Sie die Eingabeparameter von `OutlinedTextField` vergleichen, werden Sie feststellen, dass sie ziemlich ähnlich sind:
++
+[source,kotlin]
+----
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NotOutlinedEditTextExample() {
+    TextField(
+        value = "",
+        onValueChange = {},
+        label = { Text(stringResource(id = R.string.sample)) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 100.dp),
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color.Blue,
+            unfocusedBorderColor = Color.Black
+        )
+    )
+}
+----
++
+. Sie können die Anwendung ausführen, indem Sie die Compose-Funktionen innerhalb der `@Preview`-Compose-Funktion hinzufügen. In unserem Beispiel können wir `UIElementPreview()` in der gleichen Klasse erstellen, was eine Vorschau-Funktion ist, um unsere Benutzeroberfläche anzuzeigen. In der nächsten Abbildung ist die obere Ansicht ein `OutlinedTextField`, während die zweite ein normales `TextField` ist.
++
+[source,kotlin]
+----
+@Preview(showBackground = true)
+@Composable
+fun UiElementPreview() {
+    MyApplicationTheme {
+        EditTextExample()
+        NotOutlinedEditTextExample()
+    }
+}
+----
++
+image:android-2-2.png[align="center"]
++
+. Jetzt schauen wir uns Beispiele für Schaltflächen an. Wir werden verschiedene Möglichkeiten betrachten, Schaltflächen mit unterschiedlichen Formen zu erstellen. Wenn Sie mit der Maus über der Button()-Compose-Funktion schweben, sehen Sie, welche Eingabe sie akzeptiert, wie in der nächsten Abbildung dargestellt.
++
+image:android-2-3.png[align="center"]
++
+In unserem zweiten Beispiel werden wir versuchen, eine Schaltfläche mit einem Symbol darauf zu erstellen. Darüber hinaus werden wir Text hinzufügen, was entscheidend ist, wenn Schaltflächen erstellt werden, da wir den Benutzern angeben müssen, welche Aktion die Schaltfläche ausführt oder was passieren wird, wenn sie darauf geklickt wird.
+. Gehen Sie also voran und erstellen Sie eine Compose-Funktion in der gleichen Kotlin-Datei und nennen Sie sie `ButtonWithIcon()`. Importieren Sie dann die `Button()`-Compose-Funktion.
+. Innerhalb dieser Funktion müssen Sie ein `Icon()` mit `painterResource`-Eingabe, einer `contentDescription`, einem `Modifier` und `tint` importieren. Wir benötigen auch `Text()`, der unserer Schaltfläche einen Namen gibt. In unserem Beispiel werden wir `tint` nicht verwenden:
++
+[source,kotlin]
+----
+@Composable
+fun ButtonWithIcon() {
+  Button(onClick = {}) {
+    Icon(
+      painterResource(id = R.drawable.ic_baseline_shopping_bag_24),
+      contentDescription = stringResource(id = R.string.shop),
+      modifier = Modifier.size(20.dp)
+    )
+    Text(text = stringResource(id = R.string.buy), Modifier.padding(start = 10.dp))
+  }
+}
+----
++
+. Erstellen Sie eine neue Compose-Funktion und nennen Sie sie `CornerCutShapeButton()`. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit abgeschnittenen Ecken zu erstellen:
++
+[source,kotlin]
+----
+@Composable
+fun CornerCutShapeButton() {
+  Button(onClick = {}, shape = CutCornerShape(10)) {
+    Text(text = stringResource(id = R.string.cornerButton))
+  }
+}
+----
++
+. Erstellen Sie eine neue Compose-Funktion und nennen Sie sie `RoundCornerShapeButton()`. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit abgerundeten Ecken zu erstellen:
++
+[source,kotlin]
+----
+@Composable
+fun RoundCornerShapeButton() {
+  Button(onClick = {}, shape = RoundedCornerShape(10.dp)) {
+    Text(text = stringResource(id = R.string.rounded))
+  }
+}
+----
++
+. Erstellen Sie eine neue Compose-Funktion und nennen Sie sie `ElevatedButtonExample()`. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit Erhebung zu erstellen:
++
+[source,kotlin]
+----
+@Composable
+fun ElevatedButtonExample() {
+  Button(
+    onClick = {},
+    elevation = ButtonDefaults.elevation(
+      defaultElevation = 8.dp,
+      pressedElevation = 10.dp,
+      disabledElevation = 0.dp
+    )
+  ) {
+    Text(text = stringResource(id = R.string.elevated))
+  }
+}
+----
++
+. Nachdem Sie die Anwendung gestartet haben, sollte ein Bild ähnlich wie in der nächsten Abbildung erscheinen. Die erste Schaltfläche nach dem TextField ist `ButtonWithIcon()`, die zweite ist `CornerCutShapeButton()`, die dritte ist `RoundCornerShapeButton()`, und schließlich haben wir `ElevatedButtonExample()`.
++
+image:android-2-4.png[align="center"]
++
+. Schauen wir uns nun ein letztes Beispiel an, da wir im Laufe des Buchs verschiedene Ansichten und Stile verwenden und dabei mehr lernen werden. Lassen Sie uns jetzt eine Bildansicht betrachten; die `Image()`-Compose-Funktion akzeptiert mehrere Eingaben, wie in der nächsten Abbildung dargestellt.
++
+image:android-2-5.png[align="center"]
++
+. In unserem Beispiel wird die `Image()` nur einen `painter` haben, der nicht null sein kann, was bedeutet, dass Sie ein Bild für diese Compose-Funktion bereitstellen müssen, eine Inhaltsbeschreibung für die Barrierefreiheit und einen Modifier:
++
+[source,kotlin]
+----
+@Composable
+fun ImageViewExample() {
+  Image(
+    painterResource(id = R.drawable.android),
+    contentDescription = stringResource(id = R.string.image),
+    modifier = Modifier.size(200.dp)
+  )
+}
+----
++
+. Sie können auch versuchen, mit anderen Dingen zu experimentieren, wie zum Beispiel das Hinzufügen von `RadioButton()`- und `CheckBox()`-Elementen und deren Anpassung.
+Wenn Sie Ihre Anwendung ausführen, sollte das Ergebnis etwas Ähnliches wie in der nächsten Abbildung sein.
++
+image:android-2-6.png[align="center"]
+
+=== Funktionsweise
+
+Jede Compose-Funktion ist mit der `@Composable`-Annotation versehen. Diese Annotation teilt dem Compose-Compiler mit, dass der bereitgestellte Compiler dazu bestimmt ist, die bereitgestellten Daten in eine Benutzeroberfläche umzuwandeln. Es ist auch wichtig zu beachten, dass der Name jeder Compose-Funktion ein Nomen sein muss und kein Verb oder Adjektiv sein darf. Google stellt diese Richtlinien bereit.
+Jede von Ihnen erstellte Compose-Funktion kann Parameter akzeptieren, die es der App-Logik ermöglichen, Ihre Benutzeroberfläche zu beschreiben oder zu ändern.
+
+Wir erwähnen den Compose-Compiler, was bedeutet, dass dieser Compiler irgendein spezielles Programm ist, das den von uns geschriebenen Code analysiert und ihn in etwas übersetzt, das der Computer verstehen kann – oder Maschinensprache.
+
+In `Icon()` gibt `painterResouce` das Symbol an, das wir der Schaltfläche hinzufügen werden. `contentDescription` hilft bei der Barrierefreiheit, und der `modifier` wird verwendet, um unser Symbol zu dekorieren.
+
+Wir können die erstellten UI-Elemente vorab anzeigen, indem wir die @Preview-Annotation hinzufügen und `showBackground = true` setzen:
+
+[source,kotlin]
+----
+@Preview(showBackground = true)
+----
++
+`@Preview` ist sehr mächtig und wir werden uns die richtige Verwendung in späteren Kapiteln genauer ansehen.
 
 
 == Scrollable List mit Jetpack Compose
+image:android-2-7.png[align="center"]
+
+=== Einleitung
+Beim Erstellen von Android-Anwendungen sind wir uns alle einig, dass Sie wissen müssen, wie Sie eine `RecyclerView` erstellen, um Ihre Daten anzuzeigen. Mit unserer neuen, modernen Art, Android-Anwendungen zu erstellen, können wir `LazyColumn` verwenden, was sich ähnlich verhält.
+In diesem Rezept werden wir uns Zeilen, Spalten und `LazyColumn` ansehen und eine scrollbare Liste mit unseren Dummy-Daten erstellen.
+Zusätzlich werden wir dabei auch etwas Kotlin lernen.
+
+Wir werden das Projekt Compose Basics weiterhin verwenden, um eine scrollbare Liste zu erstellen. Daher müssen Sie die vorherige Anleitung abgeschlossen haben, um zu beginnen.
+
+=== Programm
+. Lassen Sie uns jetzt unsere erste scrollbare Liste erstellen. Zuerst brauchen wir jedoch Dummy-Daten, die in unserer Liste angezeigt werden sollen. Erstellen Sie daher ein Paket namens `favoritecity`, in dem unser scrollbares Beispiel leben wird.
+. Innerhalb des Pakets `favoritecity` erstellen Sie eine neue Datenklasse und nennen Sie sie `City`; dies wird unsere Dummy-Datenquelle sein - `data class City()`.
+. Modellieren wir unsere City-Datenklasse. Stellen Sie sicher, dass Sie die erforderlichen Imports hinzufügen, sobald Sie die annotierten Werte hinzugefügt haben:
++
+[source,kotlin]
+----
+data class City(
+ val id: Int,
+ @StringRes val nameResourceId: Int,
+ @DrawableRes val imageResourceId: Int
+)
+----
++
+. Jetzt müssen wir in unseren Dummy-Daten eine Kotlin-Klasse erstellen und diese Klasse `CityDataSource` nennen. In dieser Klasse werden wir eine Funktion namens `loadCities()` erstellen, die unsere Liste von `List<City>` zurückgibt, die wir in unserer scrollbaren Liste anzeigen werden.
++
+[source,kotlin]
+----
+class CityDataSource {
+ fun loadCities(): List<City> {
+ return listOf(
+ City(1, R.string.spain, R.drawable.spain),
+ City(2, R.string.new_york, R.drawable.newyork),
+ City(3, R.string.tokyo, R.drawable.tokyo),
+ City(4, R.string.switzerland, R.drawable.switzerland),
+ City(5, R.string.singapore, R.drawable.singapore),
+ City(6, R.string.paris, R.drawable.paris),
+ )
+ }
+}
+----
++
+. Jetzt haben wir unsere Dummy-Daten, und es ist Zeit, diese in unserer scrollbaren Liste anzuzeigen. Erstellen Sie eine neue Kotlin-Datei in unserem `components`-Paket und nennen Sie sie `CityComponents`. In `CityComponents` erstellen wir unsere `@Preview`-Funktion:
++
+[source,kotlin]
+----
+@Preview(showBackground = true)
+@Composable
+private fun CityCardPreview() {
+ CityApp()
+}
+----
++
+. Innerhalb unserer `@Preview`-Funktion haben wir eine weitere Compose-Funktion, `CityApp()`; innerhalb dieser Funktion rufen wir unsere `CityList`-Compose-Funktion auf, die die Liste als Parameter hat. In dieser Compose-Funktion rufen wir außerdem `LazyColumn` auf, und items wird `CityCard(cities)` sein. Weitere Erläuterungen zu `LazyColumn` und items finden Sie im Abschnitt "Funktionsweise":
++
+[source,kotlin]
+----
+@Composable
+fun CityList(cityList: List<City>) {
+ LazyColumn {
+ items(cityList) { cities ->
+ CityCard(cities)
+ }
+ }
+}
+----
++
+. Schließlich erstellen wir unsere `CityCard(city)`-Compose-Funktion:
++
+[source,kotlin]
+----
+@Composable
+fun CityCard(city: City) {
+ Card(modifier = Modifier.padding(10.dp),
+ elevation = 4.dp) {
+ Column {
+ Image(
+ painter = painterResource(city.imageResourceId),
+ contentDescription = stringResource(city.nameResourceId),
+ modifier = Modifier
+ .fillMaxWidth()
+ .height(154.dp),
+ contentScale = ContentScale.Crop
+ )
+ Text(
+ text = LocalContext.current.getString(city.nameResourceId),
+ modifier = Modifier.padding(16.dp),
+ style = MaterialTheme.typography.h5
+ )
+ }
+ }
+}
+----
++
+Wenn Sie die `CityCardPreview`-Komponierfunktion ausführen, sollte eine scrollbare Liste erstellt werden, wie in der nächsten Abbildung zu sehen ist.
+image:android-2-7.png[align="center"]
+
+=== Funktionsweise
 
 == Tab-Layout mit View Pager
 
+=== Einleitung
+
+=== Programm
+
+=== Funktionsweise
+
 == Animationen
+
+=== Einleitung
+
+=== Programm
+
+=== Funktionsweise
 
 == Accessibility
 
+=== Einleitung
+
+=== Programm
+
+=== Funktionsweise
+
 == Declarative Graphics
 
+=== Einleitung
+
+=== Programm
+
+=== Funktionsweise
+
 == Grundlagen Android-Entwicklung
+
+=== Einleitung
+
+=== Programm
+
+=== Funktionsweise

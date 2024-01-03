@@ -1,6 +1,7 @@
 = Lectures
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
+:source-highlighter: highlight.js
 :experimental:
 :sectnums:
 :toc:

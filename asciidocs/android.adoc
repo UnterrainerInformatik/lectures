@@ -1,6 +1,7 @@
 = Android - Course
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
+:source-highlighter: highlight.js
 :experimental:
 :sectnums:
 :toc:
@@ -23,7 +24,7 @@ link:https://unterrainerinformatik.github.io/lectures/android-1.html[Android - 1
 * Deine App mit Gradlew laufen lassen
 
 == Jetpack Compose
-link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2 - ]
+link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2 - Jatpack Compose]
 
 * Android Views mit Jetpack Compose
 * Scrollable List mit Jetpack Compose
