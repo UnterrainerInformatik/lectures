@@ -91,7 +91,7 @@ fun NotOutlinedEditTextExample() {
         label = { Text(stringResource(id = R.string.sample)) },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 100.dp),
+            .padding(top = 16.dp),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Color.Blue,
             unfocusedBorderColor = Color.Black,
@@ -108,13 +108,18 @@ fun NotOutlinedEditTextExample() {
 @Composable
 fun UiElementPreview() {
     MyApplicationTheme {
-        EditTextExample()
-        NotOutlinedEditTextExample()
+        Column(Modifier.padding(start = 5.dp, end = 5.dp)) {
+            EditTextExample()
+            NotOutlinedEditTextExample()
+            ButtonWithIcon()
+        }
     }
 }
 ----
 +
-image:android-2-2.png[align="center"]
+Die `Column` sagt Compose, dass die Elemente in der Spalte angeordnet werden sollen. Wenn Sie die Anwendung ausführen, sollte das Ergebnis etwas Ähnliches wie in der nächsten Abbildung sein.
++
+image:android-2-2.png[align="center",width="30%"]
 +
 . Jetzt schauen wir uns Beispiele für Schaltflächen an. Wir werden verschiedene Möglichkeiten betrachten, Schaltflächen mit unterschiedlichen Formen zu erstellen. Wenn Sie mit der Maus über der Button()-Compose-Funktion schweben, sehen Sie, welche Eingabe sie akzeptiert, wie in der nächsten Abbildung dargestellt.
 +
@@ -130,7 +135,7 @@ In unserem zweiten Beispiel werden wir versuchen, eine Schaltfläche mit einem S
 fun ButtonWithIcon() {
   Button(onClick = {}) {
     Icon(
-      painterResource(id = R.drawable.ic_baseline_shopping_bag_24),
+      painterResource(id = R.drawable.shopping_cart_24px),
       contentDescription = stringResource(id = R.string.shop),
       modifier = Modifier.size(20.dp)
     )
@@ -138,6 +143,11 @@ fun ButtonWithIcon() {
   }
 }
 ----
++
+Damit dieser Code einwandfrei funktioniert müssen sie das Icon zuerst herunterladen (https://fonts.google.com/icons?icon.platform=android, ein Icon suchen, auf den Tab 'Android' klicken und dann auf 'Download' klicken) und dann über den `Resource-Manager` im `Android-Studio` als `drawable` importieren (`+` und `Import drawables`). Dort bekommt es auch automatisch einen Namen und einen Eintrag in den Resourcen, über den wir das Bild ansprechen können. In meinem Beispiel ist dies `shopping_cart_24px`, bei Ihnen kann der Name aber durchaus anders sein (kommt auf das gewählte Icon an).
+Alternativ können Sie sich so ein File hier herunterladen https://github.com/UnterrainerInformatik/lectures/blob/main/android/chapter1/shopping_cart-24px.xml.
+Danach noch das importierte XML-File anklicken und checken, ob alle Attribute richtig gesetzt sind (in meinem Fall war `tint` auf einen Farbwert gesetzt, den ich nicht im Resource-File hatte).
+Weiters müssen Sie noch die Strings `R.string.shop` und `R.string.buy` in den Resourcen anlegen (für Quick-Action mit Maus über den Fehler fahren, `Create string value resource`).
 +
 . Erstellen Sie eine neue Compose-Funktion und nennen Sie sie `CornerCutShapeButton()`. In diesem Beispiel werden wir versuchen, eine Schaltfläche mit abgeschnittenen Ecken zu erstellen:
 +
@@ -171,7 +181,7 @@ fun RoundCornerShapeButton() {
 fun ElevatedButtonExample() {
   Button(
     onClick = {},
-    elevation = ButtonDefaults.elevation(
+    elevation = ButtonDefaults.buttonElevation(
       defaultElevation = 8.dp,
       pressedElevation = 10.dp,
       disabledElevation = 0.dp
@@ -184,7 +194,7 @@ fun ElevatedButtonExample() {
 +
 . Nachdem Sie die Anwendung gestartet haben, sollte ein Bild ähnlich wie in der nächsten Abbildung erscheinen. Die erste Schaltfläche nach dem TextField ist `ButtonWithIcon()`, die zweite ist `CornerCutShapeButton()`, die dritte ist `RoundCornerShapeButton()`, und schließlich haben wir `ElevatedButtonExample()`.
 +
-image:android-2-4.png[align="center"]
+image:android-2-4.png[align="center",width="30%"]
 +
 . Schauen wir uns nun ein letztes Beispiel an, da wir im Laufe des Buchs verschiedene Ansichten und Stile verwenden und dabei mehr lernen werden. Lassen Sie uns jetzt eine Bildansicht betrachten; die `Image()`-Compose-Funktion akzeptiert mehrere Eingaben, wie in der nächsten Abbildung dargestellt.
 +
@@ -197,17 +207,42 @@ image:android-2-5.png[align="center"]
 @Composable
 fun ImageViewExample() {
   Image(
-    painterResource(id = R.drawable.android),
+    painterResource(id = R.drawable.android_logo),
     contentDescription = stringResource(id = R.string.image),
     modifier = Modifier.size(200.dp)
   )
 }
 ----
 +
+Das Bild gehört wieder über den Resource-Manager importiert (Download hier, falls Sie kein eigenes finden: https://github.com/UnterrainerInformatik/lectures/blob/main/android/chapter1/android-logo.png) und die `contentDescription` wieder als String gesetzt.
++
 . Sie können auch versuchen, mit anderen Dingen zu experimentieren, wie zum Beispiel das Hinzufügen von `RadioButton()`- und `CheckBox()`-Elementen und deren Anpassung.
 Wenn Sie Ihre Anwendung ausführen, sollte das Ergebnis etwas Ähnliches wie in der nächsten Abbildung sein.
 +
-image:android-2-6.png[align="center"]
+image:android-2-6.png[align="center",width="30%"]
++
+Ihre `@Preview`-Funktion sollte jetzt so aussehen:
++
+[source,kotlin]
+----
+@Preview(showBackground = true)
+@Composable
+fun UiElementPreview() {
+    MyApplicationTheme {
+        Column(Modifier.padding(start = 5.dp, end = 5.dp)) {
+            EditTextExample()
+            NotOutlinedEditTextExample()
+
+            ButtonWithIcon()
+            CornerCutShapeButton()
+            RoundCornerShapeButton()
+            ElevatedButtonExample()
+
+            ImageViewExample()
+        }
+    }
+}
+----
 
 === Funktionsweise
 
