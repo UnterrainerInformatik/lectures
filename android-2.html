@@ -694,8 +694,7 @@ Installieren und auf die neueste Version updaten.
 <p>Wir weisen unserem <code>OutlinedText</code> auch Randfarben zu, wenn er fokussiert und nicht fokussiert ist, um verschiedene Zustände darzustellen. Wenn Sie also mit der Eingabe beginnen, ändert sich die Boxfarbe zu Blau, wie im Code angegeben:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@OptIn</span><span class="p">(</span><span class="nc">ExperimentalMaterial3Api</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
-<span class="nd">@Composable</span>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
 <span class="k">fun</span> <span class="nf">EditTextExample</span><span class="p">()</span> <span class="p">{</span>
     <span class="nc">OutlinedTextField</span><span class="p">(</span>
         <span class="n">value</span> <span class="p">=</span> <span class="s">""</span><span class="p">,</span>
@@ -704,9 +703,9 @@ Installieren und auf die neueste Version updaten.
         <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
             <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
             <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">top</span> <span class="p">=</span> <span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
-        <span class="n">colors</span> <span class="p">=</span> <span class="nc">TextFieldDefaults</span><span class="p">.</span><span class="nf">outlinedTextFieldColors</span><span class="p">(</span>
+        <span class="n">colors</span> <span class="p">=</span> <span class="nc">OutlinedTextFieldDefaults</span><span class="p">.</span><span class="nf">colors</span><span class="p">(</span>
             <span class="n">focusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Blue</span><span class="p">,</span>
-            <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span>
+            <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">}</span></code></pre>
@@ -720,8 +719,7 @@ Installieren und auf die neueste Version updaten.
 <p>Wir haben auch einen anderen Typ von <code>TextField</code>, der nicht umrandet ist. Wenn Sie die Eingabeparameter von <code>OutlinedTextField</code> vergleichen, werden Sie feststellen, dass sie ziemlich ähnlich sind:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@OptIn</span><span class="p">(</span><span class="nc">ExperimentalMaterial3Api</span><span class="o">::</span><span class="k">class</span><span class="p">)</span>
-<span class="nd">@Composable</span>
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
 <span class="k">fun</span> <span class="nf">NotOutlinedEditTextExample</span><span class="p">()</span> <span class="p">{</span>
     <span class="nc">TextField</span><span class="p">(</span>
         <span class="n">value</span> <span class="p">=</span> <span class="s">""</span><span class="p">,</span>
@@ -730,9 +728,9 @@ Installieren und auf die neueste Version updaten.
         <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
             <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
             <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">top</span> <span class="p">=</span> <span class="mi">100</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
-        <span class="n">colors</span> <span class="p">=</span> <span class="nc">TextFieldDefaults</span><span class="p">.</span><span class="nf">outlinedTextFieldColors</span><span class="p">(</span>
+        <span class="n">colors</span> <span class="p">=</span> <span class="nc">OutlinedTextFieldDefaults</span><span class="p">.</span><span class="nf">colors</span><span class="p">(</span>
             <span class="n">focusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Blue</span><span class="p">,</span>
-            <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span>
+            <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">)</span>
 <span class="p">}</span></code></pre>
@@ -1111,7 +1109,7 @@ Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-03 21:56:27 UTC
+Last updated 2024-01-04 20:09:15 UTC
 </div>
 </div>
 </body>
