@@ -727,7 +727,7 @@ Installieren und auf die neueste Version updaten.
         <span class="n">label</span> <span class="p">=</span> <span class="p">{</span> <span class="nc">Text</span><span class="p">(</span><span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">sample</span><span class="p">))</span> <span class="p">},</span>
         <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span>
             <span class="p">.</span><span class="nf">fillMaxWidth</span><span class="p">()</span>
-            <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">top</span> <span class="p">=</span> <span class="mi">100</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
+            <span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">top</span> <span class="p">=</span> <span class="mi">16</span><span class="p">.</span><span class="n">dp</span><span class="p">),</span>
         <span class="n">colors</span> <span class="p">=</span> <span class="nc">OutlinedTextFieldDefaults</span><span class="p">.</span><span class="nf">colors</span><span class="p">(</span>
             <span class="n">focusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Blue</span><span class="p">,</span>
             <span class="n">unfocusedBorderColor</span> <span class="p">=</span> <span class="nc">Color</span><span class="p">.</span><span class="nc">Black</span><span class="p">,</span>
@@ -745,14 +745,20 @@ Installieren und auf die neueste Version updaten.
 <span class="nd">@Composable</span>
 <span class="k">fun</span> <span class="nf">UiElementPreview</span><span class="p">()</span> <span class="p">{</span>
     <span class="nc">MyApplicationTheme</span> <span class="p">{</span>
-        <span class="nc">EditTextExample</span><span class="p">()</span>
-        <span class="nc">NotOutlinedEditTextExample</span><span class="p">()</span>
+        <span class="nc">Column</span><span class="p">(</span><span class="nc">Modifier</span><span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">start</span> <span class="p">=</span> <span class="mi">5</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span> <span class="n">end</span> <span class="p">=</span> <span class="mi">5</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nc">EditTextExample</span><span class="p">()</span>
+            <span class="nc">NotOutlinedEditTextExample</span><span class="p">()</span>
+            <span class="nc">ButtonWithIcon</span><span class="p">()</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/android-2-2.png" alt="android 2 2"></span></p>
+<p>Die <code>Column</code> sagt Compose, dass die Elemente in der Spalte angeordnet werden sollen. Wenn Sie die Anwendung ausführen, sollte das Ergebnis etwas Ähnliches wie in der nächsten Abbildung sein.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-2-2.png" alt="android 2 2" width="30%"></span></p>
 </div>
 </li>
 <li>
@@ -775,7 +781,7 @@ Installieren und auf die neueste Version updaten.
 <span class="k">fun</span> <span class="nf">ButtonWithIcon</span><span class="p">()</span> <span class="p">{</span>
   <span class="nc">Button</span><span class="p">(</span><span class="n">onClick</span> <span class="p">=</span> <span class="p">{})</span> <span class="p">{</span>
     <span class="nc">Icon</span><span class="p">(</span>
-      <span class="nf">painterResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ic_baseline_shopping_bag_24</span><span class="p">),</span>
+      <span class="nf">painterResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">shopping_cart_24px</span><span class="p">),</span>
       <span class="n">contentDescription</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">shop</span><span class="p">),</span>
       <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">20</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
     <span class="p">)</span>
@@ -783,6 +789,12 @@ Installieren und auf die neueste Version updaten.
   <span class="p">}</span>
 <span class="p">}</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Damit dieser Code einwandfrei funktioniert müssen sie das Icon zuerst herunterladen (<a href="https://fonts.google.com/icons?icon.platform=android" class="bare">https://fonts.google.com/icons?icon.platform=android</a>, ein Icon suchen, auf den Tab 'Android' klicken und dann auf 'Download' klicken) und dann über den <code>Resource-Manager</code> im <code>Android-Studio</code> als <code>drawable</code> importieren (<code>+</code> und <code>Import drawables</code>). Dort bekommt es auch automatisch einen Namen und einen Eintrag in den Resourcen, über den wir das Bild ansprechen können. In meinem Beispiel ist dies <code>shopping_cart_24px</code>, bei Ihnen kann der Name aber durchaus anders sein (kommt auf das gewählte Icon an).
+Alternativ können Sie sich so ein File hier herunterladen <a href="https://github.com/UnterrainerInformatik/lectures/blob/main/android/chapter1/shopping_cart-24px.xml" class="bare">https://github.com/UnterrainerInformatik/lectures/blob/main/android/chapter1/shopping_cart-24px.xml</a>.
+Danach noch das importierte XML-File anklicken und checken, ob alle Attribute richtig gesetzt sind (in meinem Fall war <code>tint</code> auf einen Farbwert gesetzt, den ich nicht im Resource-File hatte).
+Weiters müssen Sie noch die Strings <code>R.string.shop</code> und <code>R.string.buy</code> in den Resourcen anlegen (für Quick-Action mit Maus über den Fehler fahren, <code>Create string value resource</code>).</p>
 </div>
 </li>
 <li>
@@ -819,7 +831,7 @@ Installieren und auf die neueste Version updaten.
 <span class="k">fun</span> <span class="nf">ElevatedButtonExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="nc">Button</span><span class="p">(</span>
     <span class="n">onClick</span> <span class="p">=</span> <span class="p">{},</span>
-    <span class="n">elevation</span> <span class="p">=</span> <span class="nc">ButtonDefaults</span><span class="p">.</span><span class="nf">elevation</span><span class="p">(</span>
+    <span class="n">elevation</span> <span class="p">=</span> <span class="nc">ButtonDefaults</span><span class="p">.</span><span class="nf">buttonElevation</span><span class="p">(</span>
       <span class="n">defaultElevation</span> <span class="p">=</span> <span class="mi">8</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span>
       <span class="n">pressedElevation</span> <span class="p">=</span> <span class="mi">10</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span>
       <span class="n">disabledElevation</span> <span class="p">=</span> <span class="mi">0</span><span class="p">.</span><span class="n">dp</span>
@@ -834,7 +846,7 @@ Installieren und auf die neueste Version updaten.
 <li>
 <p>Nachdem Sie die Anwendung gestartet haben, sollte ein Bild ähnlich wie in der nächsten Abbildung erscheinen. Die erste Schaltfläche nach dem TextField ist <code>ButtonWithIcon()</code>, die zweite ist <code>CornerCutShapeButton()</code>, die dritte ist <code>RoundCornerShapeButton()</code>, und schließlich haben wir <code>ElevatedButtonExample()</code>.</p>
 <div class="paragraph">
-<p><span class="image"><img src="images/android-2-4.png" alt="android 2 4"></span></p>
+<p><span class="image"><img src="images/android-2-4.png" alt="android 2 4" width="30%"></span></p>
 </div>
 </li>
 <li>
@@ -850,19 +862,46 @@ Installieren und auf die neueste Version updaten.
 <pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
 <span class="k">fun</span> <span class="nf">ImageViewExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="nc">Image</span><span class="p">(</span>
-    <span class="nf">painterResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">android</span><span class="p">),</span>
+    <span class="nf">painterResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">android_logo</span><span class="p">),</span>
     <span class="n">contentDescription</span> <span class="p">=</span> <span class="nf">stringResource</span><span class="p">(</span><span class="n">id</span> <span class="p">=</span> <span class="nc">R</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">image</span><span class="p">),</span>
     <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">200</span><span class="p">.</span><span class="n">dp</span><span class="p">)</span>
   <span class="p">)</span>
 <span class="p">}</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Das Bild gehört wieder über den Resource-Manager importiert (Download hier, falls Sie kein eigenes finden: <a href="https://github.com/UnterrainerInformatik/lectures/blob/main/android/chapter1/android-logo.png" class="bare">https://github.com/UnterrainerInformatik/lectures/blob/main/android/chapter1/android-logo.png</a>) und die <code>contentDescription</code> wieder als String gesetzt.</p>
+</div>
 </li>
 <li>
 <p>Sie können auch versuchen, mit anderen Dingen zu experimentieren, wie zum Beispiel das Hinzufügen von <code>RadioButton()</code>- und <code>CheckBox()</code>-Elementen und deren Anpassung.
 Wenn Sie Ihre Anwendung ausführen, sollte das Ergebnis etwas Ähnliches wie in der nächsten Abbildung sein.</p>
 <div class="paragraph">
-<p><span class="image"><img src="images/android-2-6.png" alt="android 2 6"></span></p>
+<p><span class="image"><img src="images/android-2-6.png" alt="android 2 6" width="30%"></span></p>
+</div>
+<div class="paragraph">
+<p>Ihre <code>@Preview</code>-Funktion sollte jetzt so aussehen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Preview</span><span class="p">(</span><span class="n">showBackground</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+<span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">UiElementPreview</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">MyApplicationTheme</span> <span class="p">{</span>
+        <span class="nc">Column</span><span class="p">(</span><span class="nc">Modifier</span><span class="p">.</span><span class="nf">padding</span><span class="p">(</span><span class="n">start</span> <span class="p">=</span> <span class="mi">5</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span> <span class="n">end</span> <span class="p">=</span> <span class="mi">5</span><span class="p">.</span><span class="n">dp</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nc">EditTextExample</span><span class="p">()</span>
+            <span class="nc">NotOutlinedEditTextExample</span><span class="p">()</span>
+
+            <span class="nc">ButtonWithIcon</span><span class="p">()</span>
+            <span class="nc">CornerCutShapeButton</span><span class="p">()</span>
+            <span class="nc">RoundCornerShapeButton</span><span class="p">()</span>
+            <span class="nc">ElevatedButtonExample</span><span class="p">()</span>
+
+            <span class="nc">ImageViewExample</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
 </div>
 </li>
 </ol>
@@ -1109,7 +1148,7 @@ Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-04 20:09:15 UTC
+Last updated 2024-01-04 21:07:18 UTC
 </div>
 </div>
 </body>
