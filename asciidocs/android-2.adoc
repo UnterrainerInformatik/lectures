@@ -61,7 +61,6 @@ Installieren und auf die neueste Version updaten.
 +
 [source,kotlin]
 ----
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditTextExample() {
     OutlinedTextField(
@@ -71,9 +70,9 @@ fun EditTextExample() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 16.dp),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.Black
+            unfocusedBorderColor = Color.Black,
         )
     )
 }
@@ -84,7 +83,6 @@ Importiere alle notwendigen Libraries und definiere R.string.sample mit einem be
 +
 [source,kotlin]
 ----
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NotOutlinedEditTextExample() {
     TextField(
@@ -94,9 +92,9 @@ fun NotOutlinedEditTextExample() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(top = 100.dp),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
+        colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.Black
+            unfocusedBorderColor = Color.Black,
         )
     )
 }
