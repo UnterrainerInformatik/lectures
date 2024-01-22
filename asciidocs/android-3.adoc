@@ -1,0 +1,97 @@
+= Android - Course - 1 - Lifecycles & ViewModel
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/android.html[BACK to Android - Course]
+
+== UI-Controllers
+
+In Android gibt es 2 Arten von UI-Controllern:
+  * Activities
+  * Fragments
+
+Änderungen am Android-System führen im Allgemeinen dazu, dass UI-Controller zerstört und wieder neu erstellt werden
+Man hat im allgemeinen keinen Einfluss auf diese Vorgänge... Das passiert einfach bei:
+
+* User Aktionen
+* System Events
+
+
+Daten sollten daher NICHT direkt in Activities oder Fragments gespeichert werden!
+Diese wären dann nämlich einfach weg.
+
+=== Activities
+* Android Applikationen bestehen aus Activities
+* Diese konzentrieren sich auf eine einzelne Handlung eines Users (deswegen "Activity")
+
+image:android-3-1.png[align="center",width="70%"]
+
+=== Fragments
+* Fragments sind wiederverwendbare UI-Elemente
+* Sie sind Teile von Activities
+
+image:android-3-2.png[align="center",width="80%"]
+
+== Lifecycles
+* Unterschiedliche Elemente in Android können unterschiedliche Lifecycles haben.
+* Diese bestimmen die Events, die automatisch vom System ausgelöst werden.
+* Das System kann damit die Lebensdauer von Elementen verwalten.
+
+*Beispiel:*
+Benötige eine Applikation mit höherer Priorität mehr Speicher, werden pausierte Activities einfach gelöscht.
+
+Dabei verliert man das jeweilige Element natürlich.
+
+*Man ist selbst dafür verantwortlich, dass die Daten dieses Prozedere überleben und das Element später wieder aufgebaut werden kann.*
+
+=== Activity Lifecycle
+image:android-3-3.png[align="center",width="100%"]
+
+=== Fragment Lifecycle
+image:android-3-4.png[align="center",width="100%"]
+
+=== Daten Persistieren
+Es gibt die Methoden:
+
+* onSaveInstanceState()
+* onRestoreInstanceState()
+
+Diese werden automatisch aufgerufen, wenn das System die Daten speichern oder wiederherstellen will.
+Das ist für kleinere Datenmengen gedacht und funktioniert auch ganz gut.
+Für große Datenmengen oder Daten, die schwierig zu serialisieren sind, ist das aber weniger geeignet.
+Außerdem gibt es noch asynchrone Aufrufe, die noch laufen können, obwohl diese Methoden schon aufgerufen wurden und der UI-Controller gerade zerstört wurde.
+Dafür brauchen wir dann doch eine andere Lösung.
+
+Ohne System wird das ganze ziemlich schnell unübersichtlich.
+
+== ViewModel
+* Teil der Android Architektur
+* Speichert und managed UI-Daten unter Berücksichtigung des Activity-Lifecycles
+* Wird bei Konfigurationsänderungen NICHT zerstört!
+* Erlaubt dadurch der Applikation Konfigurationsänderungen zu überstehen
+
+Im ViewModel werden auch externe Datenquellen angebunden (Datenbank, Webservices...)
+
+image:android-3-5.png[align="center",width="100%"]
+
+=== ViewModel Lifecycle
+image:android-3-6.png[align="center",width="100%"]
+
+... Das ViewModel wird erst zerstört, wenn die Applikation komplett beendet wird.
+
+=== Shared Viewmodel
+Ein gängiges Problem ist, dass sich zwei Fragments Daten teilen müssen.
+
+* Das erste selektiert zum Beispiel ein List-Item (z.B. ein Land)
+* Das zweite zeigt Daten zum vom ersten ausgewählten Item an (z.B. das Bundesland)
+
+Hier ist ein ViewModel sehr hilfreich, auf das beide Fragments Zugriff haben.
