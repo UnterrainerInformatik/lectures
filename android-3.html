@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.20">
 <link rel="icon" type="image/png" href="themes/favicon.png">
-<title>Android - Course - 1 - Introduction</title>
+<title>Android - Course - 1 - Lifecycles &amp; ViewModel</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -434,160 +434,32 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge, pre.rouge .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
-  color: #cf222e;
-}
-pre.rouge .gr {
-  color: #f6f8fa;
-}
-pre.rouge .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-pre.rouge .nb {
-  color: #953800;
-}
-pre.rouge .nc {
-  color: #953800;
-}
-pre.rouge .no {
-  color: #953800;
-}
-pre.rouge .nn {
-  color: #953800;
-}
-pre.rouge .sr {
-  color: #116329;
-}
-pre.rouge .na {
-  color: #116329;
-}
-pre.rouge .nt {
-  color: #116329;
-}
-pre.rouge .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-pre.rouge .kc {
-  color: #0550ae;
-}
-pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #0550ae;
-}
-pre.rouge .sb {
-  color: #0550ae;
-}
-pre.rouge .bp {
-  color: #0550ae;
-}
-pre.rouge .ne {
-  color: #0550ae;
-}
-pre.rouge .nl {
-  color: #0550ae;
-}
-pre.rouge .py {
-  color: #0550ae;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #0550ae;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #0550ae;
-}
-pre.rouge .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
-  color: #0a3069;
-}
-pre.rouge .nd {
-  color: #8250df;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #8250df;
-}
-pre.rouge .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6e7781;
-}
-pre.rouge .gl {
-  color: #6e7781;
-}
-pre.rouge .gt {
-  color: #6e7781;
-}
-pre.rouge .ni {
-  color: #24292f;
-}
-pre.rouge .si {
-  color: #24292f;
-}
-pre.rouge .ge {
-  color: #24292f;
-  font-style: italic;
-}
-pre.rouge .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-</style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Android - Course - 1 - Introduction</h1>
+<h1>Android - Course - 1 - Lifecycles &amp; ViewModel</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_grundlagen_android_entwicklung">1. Grundlagen Android-Entwicklung</a>
+<li><a href="#_ui_controllers">1. UI-Controllers</a>
 <ul class="sectlevel2">
-<li><a href="#_was_ist_android">1.1. Was ist Android?</a></li>
-<li><a href="#_warum_android">1.2. Warum Android?</a></li>
-<li><a href="#_wie_funktioniert_android">1.3. Wie funktioniert Android?</a></li>
+<li><a href="#_activities">1.1. Activities</a></li>
+<li><a href="#_fragments">1.2. Fragments</a></li>
 </ul>
 </li>
-<li><a href="#_android_studio_ide">2. Android Studio IDE</a></li>
-<li><a href="#_kotlin_grundzüge">3. Kotlin Grundzüge</a>
+<li><a href="#_lifecycles">2. Lifecycles</a>
 <ul class="sectlevel2">
-<li><a href="#_kotlin">3.1. Kotlin</a></li>
-<li><a href="#_java_vs_kotlin">3.2. Java vs. Kotlin</a></li>
-<li><a href="#_übung">3.3. Übung</a></li>
+<li><a href="#_activity_lifecycle">2.1. Activity Lifecycle</a></li>
+<li><a href="#_fragment_lifecycle">2.2. Fragment Lifecycle</a></li>
+<li><a href="#_daten_persistieren">2.3. Daten Persistieren</a></li>
 </ul>
 </li>
-<li><a href="#_komponenten_einer_android_app">4. Komponenten einer Android-App</a>
+<li><a href="#_viewmodel">3. ViewModel</a>
 <ul class="sectlevel2">
-<li><a href="#_androidmanifest_xml">4.1. AndroidManifest.xml</a></li>
-<li><a href="#_application_components">4.2. Application Components</a></li>
+<li><a href="#_viewmodel_lifecycle">3.1. ViewModel Lifecycle</a></li>
+<li><a href="#_shared_viewmodel">3.2. Shared Viewmodel</a></li>
 </ul>
 </li>
-<li><a href="#_meine_erste_android_app">5. Meine erste Android-App</a></li>
-<li><a href="#_jetpack_compose">6. Jetpack Compose</a>
-<ul class="sectlevel2">
-<li><a href="#_mein_erster_knopf_in_jetpack_compose">6.1. Mein erster Knopf in Jetpack-Compose</a></li>
-</ul>
-</li>
-<li><a href="#_android_project_structure">7. Android Project Structure</a>
-<ul class="sectlevel2">
-<li><a href="#_manifest_ordner">7.1. Manifest Ordner</a></li>
-</ul>
-</li>
-<li><a href="#_deine_app_mit_gradlew_laufen_lassen">8. Deine App mit Gradlew laufen lassen</a></li>
 </ul>
 </div>
 </div>
@@ -595,7 +467,7 @@ pre.rouge .gs {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class="icon"><a class="image" href="https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/android-1.adoc"><i class="fa fa-file-text-o"></i></a></span> ‏ ‏ ‎
+<p><span class="icon"><a class="image" href="https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/android-3.adoc"><i class="fa fa-file-text-o"></i></a></span> ‏ ‏ ‎
 <span class="icon"><a class="image" href="https://github.com/UnterrainerInformatik/documents"><i class="fa fa-github-square"></i></a></span> ‏ ‏ ‎</p>
 </div>
 <div class="paragraph">
@@ -604,710 +476,187 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_grundlagen_android_entwicklung"><a class="anchor" href="#_grundlagen_android_entwicklung"></a>1. Grundlagen Android-Entwicklung</h2>
+<h2 id="_ui_controllers"><a class="anchor" href="#_ui_controllers"></a>1. UI-Controllers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class="image"><img src="images/android-1-0.png" alt="android 1 0" width="100%"></span></p>
+<p>In Android gibt es 2 Arten von UI-Controllern:
+  * Activities
+  * Fragments</p>
 </div>
-<div class="sect2">
-<h3 id="_was_ist_android"><a class="anchor" href="#_was_ist_android"></a>1.1. Was ist Android?</h3>
+<div class="paragraph">
+<p>Änderungen am Android-System führen im Allgemeinen dazu, dass UI-Controller zerstört und wieder neu erstellt werden
+Man hat im allgemeinen keinen Einfluss auf diese Vorgänge&#8230;&#8203; Das passiert einfach bei:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>OS- und Programmierplattform von Google für mobile Geräte entwickelt.</p>
+<p>User Aktionen</p>
 </li>
 <li>
-<p>Basiert auf Linux-Kernel und Java</p>
+<p>System Events</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/android-1-1.png" alt="android 1 1" width="100%"></span></p>
-</div>
+<p>Daten sollten daher NICHT direkt in Activities oder Fragments gespeichert werden!
+Diese wären dann nämlich einfach weg.</p>
 </div>
 <div class="sect2">
-<h3 id="_warum_android"><a class="anchor" href="#_warum_android"></a>1.2. Warum Android?</h3>
+<h3 id="_activities"><a class="anchor" href="#_activities"></a>1.1. Activities</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Populärste Plattform für mobile Apps</p>
+<p>Android Applikationen bestehen aus Activities</p>
 </li>
 <li>
-<p>Einfach zu entwickelnde Apps</p>
-</li>
-<li>
-<p>Viele Verteilungsmöglichkeiten</p>
+<p>Diese konzentrieren sich auf eine einzelne Handlung eines Users (deswegen "Activity")</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-3-1.png" alt="android 3 1" width="70%"></span></p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_wie_funktioniert_android"><a class="anchor" href="#_wie_funktioniert_android"></a>1.3. Wie funktioniert Android?</h3>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-2.png" alt="android 1 2" width="50%"></span></p>
+<h3 id="_fragments"><a class="anchor" href="#_fragments"></a>1.2. Fragments</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Fragments sind wiederverwendbare UI-Elemente</p>
+</li>
+<li>
+<p>Sie sind Teile von Activities</p>
+</li>
+</ul>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="paragraph">
+<p><span class="image"><img src="images/android-3-2.png" alt="android 3 2" width="80%"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lifecycles"><a class="anchor" href="#_lifecycles"></a>2. Lifecycles</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
 <li>
-<p>Deine Apps leben hier zusammen mit den System-Apps (E-Mail, SMS, &#8230;&#8203;)</p>
+<p>Unterschiedliche Elemente in Android können unterschiedliche Lifecycles haben.</p>
 </li>
 <li>
-<p>UI Komponenten, Ressourcen-Management, Lifecycle-Management. Stellt native Bibliotheken für die App zur Verfügung.</p>
+<p>Diese bestimmen die Events, die automatisch vom System ausgelöst werden.</p>
 </li>
 <li>
-<p>Jede App läuft in ihrer eigenen Instanz der Android Runtime.</p>
+<p>Das System kann damit die Lebensdauer von Elementen verwalten.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Beispiel:</strong>
+Benötige eine Applikation mit höherer Priorität mehr Speicher, werden pausierte Activities einfach gelöscht.</p>
+</div>
+<div class="paragraph">
+<p>Dabei verliert man das jeweilige Element natürlich.</p>
+</div>
+<div class="paragraph">
+<p><strong>Man ist selbst dafür verantwortlich, dass die Daten dieses Prozedere überleben und das Element später wieder aufgebaut werden kann.</strong></p>
+</div>
+<div class="sect2">
+<h3 id="_activity_lifecycle"><a class="anchor" href="#_activity_lifecycle"></a>2.1. Activity Lifecycle</h3>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-3-3.png" alt="android 3 3" width="100%"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fragment_lifecycle"><a class="anchor" href="#_fragment_lifecycle"></a>2.2. Fragment Lifecycle</h3>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-3-4.png" alt="android 3 4" width="100%"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_daten_persistieren"><a class="anchor" href="#_daten_persistieren"></a>2.3. Daten Persistieren</h3>
+<div class="paragraph">
+<p>Es gibt die Methoden:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>onSaveInstanceState()</p>
 </li>
 <li>
-<p>Stellt Hardware-Abstraktionen zur Verfügung. Jede App hat Zugriff auf die Hardware, aber nur über die API.</p>
+<p>onRestoreInstanceState()</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Diese werden automatisch aufgerufen, wenn das System die Daten speichern oder wiederherstellen will.
+Das ist für kleinere Datenmengen gedacht und funktioniert auch ganz gut.
+Für große Datenmengen oder Daten, die schwierig zu serialisieren sind, ist das aber weniger geeignet.
+Außerdem gibt es noch asynchrone Aufrufe, die noch laufen können, obwohl diese Methoden schon aufgerufen wurden und der UI-Controller gerade zerstört wurde.
+Dafür brauchen wir dann doch eine andere Lösung.</p>
+</div>
+<div class="paragraph">
+<p>Ohne System wird das ganze ziemlich schnell unübersichtlich.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_viewmodel"><a class="anchor" href="#_viewmodel"></a>3. ViewModel</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Teil der Android Architektur</p>
 </li>
 <li>
-<p>Foundation. Kümmert sich um threading, low-level memory management, etc&#8230;&#8203;</p>
+<p>Speichert und managed UI-Daten unter Berücksichtigung des Activity-Lifecycles</p>
+</li>
+<li>
+<p>Wird bei Konfigurationsänderungen NICHT zerstört!</p>
+</li>
+<li>
+<p>Erlaubt dadurch der Applikation Konfigurationsänderungen zu überstehen</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Im ViewModel werden auch externe Datenquellen angebunden (Datenbank, Webservices&#8230;&#8203;)</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-3-5.png" alt="android 3 5" width="100%"></span></p>
+</div>
+<div class="sect2">
+<h3 id="_viewmodel_lifecycle"><a class="anchor" href="#_viewmodel_lifecycle"></a>3.1. ViewModel Lifecycle</h3>
+<div class="paragraph">
+<p><span class="image"><img src="images/android-3-6.png" alt="android 3 6" width="100%"></span></p>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Das ViewModel wird erst zerstört, wenn die Applikation komplett beendet wird.</p>
 </li>
 </ol>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_android_studio_ide"><a class="anchor" href="#_android_studio_ide"></a>2. Android Studio IDE</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Installation unter: <a href="https://developer.android.com/studio/install">https://developer.android.com/studio/install</a></p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Hausübung:
-Installieren und auf die neueste Version updaten.
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_kotlin_grundzüge"><a class="anchor" href="#_kotlin_grundzüge"></a>3. Kotlin Grundzüge</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_kotlin"><a class="anchor" href="#_kotlin"></a>3.1. Kotlin</h3>
+<h3 id="_shared_viewmodel"><a class="anchor" href="#_shared_viewmodel"></a>3.2. Shared Viewmodel</h3>
 <div class="paragraph">
-<p><span class="image"><img src="images/android-1-3.png" alt="android 1 3" width="100%"></span></p>
-</div>
-<div class="paragraph">
-<p>Seit 2019 ist Kotlin die bevorzugte Programmiersprache für Android-Apps bei Google
-Seitdem ist die Sprache sehr populär geworden</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_java_vs_kotlin"><a class="anchor" href="#_java_vs_kotlin"></a>3.2. Java vs. Kotlin</h3>
-<div class="sect3">
-<h4 id="_null_safety"><a class="anchor" href="#_null_safety"></a>3.2.1. Null Safety</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Jedes Objekt ist null by default</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>public Integer number;</pre>
-</div>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Kein Objekt kann null werden</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">val</span> <span class="py">number</span><span class="p">:</span> <span class="nc">Int</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;außer man gibt es so an:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">val</span> <span class="py">number</span><span class="p">:</span> <span class="nc">Int</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_extension_functions"><a class="anchor" href="#_extension_functions"></a>3.2.2. Extension Functions</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Ohne Erweiterung (z.B. Project Lombok) nicht verfügbar. (Ev. noch über Vererbung&#8230;&#8203; Aber nicht jedes zu erweiternde Projekt gehört auch euch.)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Standardmäßig in die Sprache eingebaut. Einfach den Funktionsnamen in jedem beliebigen File mit dem jeweiligen Klassennamen prefixen.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="k">fun</span> <span class="nc">String</span><span class="p">.</span><span class="nf">removeFirstLastChar</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span>  <span class="k">this</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="n">length</span> <span class="p">-</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">&gt;)</span> <span class="p">{</span>
-    <span class="kd">val</span> <span class="py">myString</span><span class="p">=</span> <span class="s">"Hello Everyone"</span>
-    <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">myString</span><span class="p">.</span><span class="nf">removeFirstLastChar</span><span class="p">()</span>
-    <span class="nf">println</span><span class="p">(</span><span class="s">"First character is: $result"</span><span class="p">)</span>
-<span class="p">}</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_code"><a class="anchor" href="#_code"></a>3.2.3. Code</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Java</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Kotlin</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Eher ausführlich (getter, setter).</p>
-</li>
-<li>
-<p>Gibts schon länger als so manches modernes Sprachkonstrukt (z.B. async).</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Sehr kompakt.</p>
-</li>
-<li>
-<p>Weniger Lines Of Code.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>&#8658; Besser zu erstellen, lesen und zu warten.</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_coroutines"><a class="anchor" href="#_coroutines"></a>3.2.4. Coroutines</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Background Threads. (z.B.: ExecutorService)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Eigener Threadpool</p>
-</li>
-<li>
-<p>In Sprache fix eingebaut</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">=</span> <span class="nf">runBlocking</span> <span class="p">{</span> <span class="c1">// this: CoroutineScope</span>
-    <span class="nf">launch</span> <span class="p">{</span> <span class="c1">// launch a new coroutine and continue</span>
-        <span class="nf">delay</span><span class="p">(</span><span class="mi">1000L</span><span class="p">)</span> <span class="c1">// non-blocking delay for 1 second</span>
-        <span class="nf">println</span><span class="p">(</span><span class="s">"World!"</span><span class="p">)</span> <span class="c1">// print after delay</span>
-    <span class="p">}</span>
-    <span class="nf">println</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span> <span class="c1">// main coroutine continues</span>
-<span class="p">}</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Output:
-Hello
-World!</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_data_classes"><a class="anchor" href="#_data_classes"></a>3.2.5. Data Classes</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Händisch (viel Code oder generiert)</p>
-</li>
-<li>
-<p>Durch Verwendung von Project Lombok</p>
-</li>
-</ul>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Ein eingebautes Sprachkonstrukt</p>
-</li>
-<li>
-<p>Getter, Setter, HashCode(), Equals(), toString()&#8230;&#8203; werden automatisch implementiert.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_smart_casts"><a class="anchor" href="#_smart_casts"></a>3.2.6. Smart Casts</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Entwickler muss die Typen überprüfen und angeben.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p>Casting Checks werden automatisch durchgeführt (smart casts feature).</p>
-</li>
-<li>
-<p>Redundante Checks werden entfernt.</p>
-</li>
-</ul>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_no_checked_exceptions"><a class="anchor" href="#_no_checked_exceptions"></a>3.2.7. No Checked Exceptions</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Es gibt checked Exceptions.</p>
-</div>
-<div class="paragraph">
-<p>(Meiner Meinung nach ist das eine gute Sache)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Es gibt keine checked Exceptions.</p>
-</div>
-<div class="paragraph">
-<p>(Meiner Meinung nach eine schlechte Sache, weil &#8230;&#8203; nun &#8230;&#8203; exception handling ist wichtig und sollte nicht optional sein.)</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_higher_order_funcs_und_lambdas"><a class="anchor" href="#_higher_order_funcs_und_lambdas"></a>3.2.8. Higher-Order Funcs und Lambdas</h4>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Java</th>
-<th class="tableblock halign-left valign-top">Kotlin</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>In abgespeckter Form verfügbar oder mit alten Sprachkonstrukten nachgebaut.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Inherent in Sprache enthalten.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="nf">max</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span> <span class="p">{</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">-&gt;</span> <span class="n">a</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">length</span> <span class="p">})</span>
-
-<span class="cm">/**
-The function max is a higher-order function,
-as it takes a function value as its second argument.
-This second argument is an expression that is itself a function,
-called a function literal,
-which is equivalent to the following named function:
-**/</span>
-
-<span class="k">fun</span> <span class="nf">compare</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="n">a</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">length</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_übung"><a class="anchor" href="#_übung"></a>3.3. Übung</h3>
-<div class="paragraph">
-<p>Spielwiese unter: <a href="https://play.kotlinlang.org/koans/overview">https://play.kotlinlang.org/koans/overview</a></p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
-Android-Studio herunterladen: <a href="https://developer.android.com/studio/releases" class="bare">https://developer.android.com/studio/releases</a>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_komponenten_einer_android_app"><a class="anchor" href="#_komponenten_einer_android_app"></a>4. Komponenten einer Android-App</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_androidmanifest_xml"><a class="anchor" href="#_androidmanifest_xml"></a>4.1. AndroidManifest.xml</h3>
-<div class="paragraph">
-<p>Jedes Android-App-Projekt muss dieses File im Root des Projekt-Source-Sets enthalten.
-Es enthält wichtige Informationen über die App für:</p>
+<p>Ein gängiges Problem ist, dass sich zwei Fragments Daten teilen müssen.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Build Tools</p>
+<p>Das erste selektiert zum Beispiel ein List-Item (z.B. ein Land)</p>
 </li>
 <li>
-<p>The Android Operating System</p>
-</li>
-<li>
-<p>Google Play</p>
+<p>Das zweite zeigt Daten zum vom ersten ausgewählten Item an (z.B. das Bundesland)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Ist eine XML-Datei, die die Struktur der App beschreibt. Ist XML, damit sie leichter von Menschen gelesen und ohne Editor geändert werden kann.
-Wird beim Kompilieren in ein binäres Format übersetzt (wegen Geschwindigkeit).</p>
+<p>Hier ist ein ViewModel sehr hilfreich, auf das beide Fragments Zugriff haben.</p>
 </div>
-<div class="paragraph">
-<p>Es enthält Informationen über die Applikation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>functions</p>
-</li>
-<li>
-<p>services</p>
-</li>
-<li>
-<p>broadcast receivers</p>
-</li>
-<li>
-<p>content producers</p>
-</li>
-<li>
-<p>components</p>
-</li>
-<li>
-<p>The apps permissions</p>
-</li>
-<li>
-<p>The apps rights (permissions, die andere Apps brauchen werden, damit sie von eurer App Daten bekommen können.)</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_application_components"><a class="anchor" href="#_application_components"></a>4.2. Application Components</h3>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-4.png" alt="android 1 4" width="80%"></span></p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-5.png" alt="android 1 5" width="100%"></span></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Fragments</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Teile einer Maske, die innerhalb einer Activity verwendet werden können.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Views und ViewGroups</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Views sind GUI-Elemente. ViewGroups sind Container für Views.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Layouts</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>XML Files, die die Struktur der Activities, Fragments und ViewGroups beschreiben.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Resources</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Images, Strings, UI Layouts&#8230;&#8203;</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Manifest</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Explained above.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_meine_erste_android_app"><a class="anchor" href="#_meine_erste_android_app"></a>5. Meine erste Android-App</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Erstmal Android Studio herunterladen und installieren, falls dies nicht schon erfolgt ist. <a href="https://developer.android.com/studio/releases" class="bare">https://developer.android.com/studio/releases</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_jetpack_compose"><a class="anchor" href="#_jetpack_compose"></a>6. Jetpack Compose</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Modernes UI Toolkit für Android-Entwicklung.
-Reactive Programming Model.
-Verwendet Kotlin Sprachkonstrukte.
-Vollständig deklarativ wie flutter, Swift UI oder React Native (sag ihm WAS du willst, nicht WIE du es willst).</p>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;beschreibt die UI als Funktion, die Daten in eine UI-Hierarchie transformiert
-&#8230;&#8203;wenn sich die Daten ändern, ruft das Framework diese Funktionen automatisch auf und aktualisiert so die UI</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-7.png" alt="android 1 7" width="100%"></span></p>
-</div>
-<div class="sect2">
-<h3 id="_mein_erster_knopf_in_jetpack_compose"><a class="anchor" href="#_mein_erster_knopf_in_jetpack_compose"></a>6.1. Mein erster Knopf in Jetpack-Compose</h3>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-6.png" alt="android 1 6" width="80%"></span></p>
-</div>
-<div class="sect3">
-<h4 id="_neues_projekt_anlegen"><a class="anchor" href="#_neues_projekt_anlegen"></a>6.1.1. Neues Projekt anlegen</h4>
-<div class="paragraph">
-<p>In der Android Studio IDE, ist ein Projekt-Template eine Android-App, die alle notwendigen Teile hat, um eine Applikation zu erstellen.
-Es hilft dir, ein neues Projekt einzurichten.</p>
-</div>
-<div class="paragraph">
-<p>Schritt für Schritt werden wir unsere erste Android-App erstellen und sie auf dem Emulator starten:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Android Studio starten, indem du auf das Android Studio Icon in deinem Dock oder wo auch immer du Android Studio gespeichert hast, klickst.</p>
-</li>
-<li>
-<p>Wenn Android Studio startet, klicke auf "Start a new Android Studio project" am Welcome-Screen.
-Alternativ kannst Du auch auf File und dann New Project klicken.</p>
-</li>
-<li>
-<p>Klicke auf "Empty Activity" und klicke dann auf Next. (Compose ist inzwischen Standard)</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-8.png" alt="android 1 8" width="100%"></span></p>
-</div>
-<div class="paragraph">
-<p>Wenn der leere Compose Activity Screen geladen hat, wirst Du Felder sehen, wie 'Name', 'Package name', 'Save location', 'Language', und 'Minimum SDK'.
-Für dieses Kapitel nennen wir unser Projekt 'Android Community' und lassen die anderen Einstellung in Ruhe.
-Die Sprache ist per Voreinstellung auf Kotlin.
-Minimum SDK ist API 21: Android 5.0 (Lollipop). Das ist die minimale Version von Android, auf der unsere App laufen können wird.
-In diesem Fall wird unser Projekt auf ca. 98.8% aller Android-Geräte laufen können.
-Die Einstellungen im Bild unten, wie der Name und das Package, sind nur Beispiele. Du kannst Deine eigenen Werte eingeben oder es einfach so lassen, wie es voreingestellt ist.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-9.png" alt="android 1 9" width="100%"></span></p>
-</div>
-<div class="paragraph">
-<p>Jetzt auf 'Finish' klicken.</p>
-</div>
-<div class="paragraph">
-<p>Jetzt kannst Du Dich ein wenig in den Packages umsehen. Dir wird auffallen, dass es eine 'MainActivity' Klasse gibt, die von 'Activity' ableitet.
-Darin gibt es eine fun (Function) 'onCreate', die eine Methode in 'ComponentActivity' überlädt.</p>
-</div>
-<div class="paragraph">
-<p>Du wirst auch eine Funktion 'setContent' sehen, die den Inhalt einer Composable Funktion setzt.
-Sie nimmt einen Lambda-Ausdruck, die die Elemente enthält, die angezeigt werden sollen. In unserem Fall enthält er das Theme unserer Applikation.</p>
-</div>
-<div class="paragraph">
-<p>In der 'Greeting' Funktion werden wir jetzt unsere eigene Grußformel "Hello, Android
-Community" einsetzen und das Programm ausführen (run).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="kotlin"><span class="kd">class</span> <span class="nc">MainActivity</span> <span class="p">:</span> <span class="nc">ComponentActivity</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span><span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
-            <span class="nf">setContent</span> <span class="p">{</span>
-                <span class="nc">AndroidCommunityTheme</span> <span class="p">{</span>
-                    <span class="nc">Surface</span><span class="p">(</span>
-                        <span class="n">modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">.</span><span class="nf">fillMaxSize</span><span class="p">(),</span>
-                        <span class="n">color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">background</span>
-                    <span class="p">)</span> <span class="p">{</span>
-                        <span class="nc">Greeting</span><span class="p">(</span><span class="s">"Hello, Android Community"</span><span class="p">)</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_android_project_structure"><a class="anchor" href="#_android_project_structure"></a>7. Android Project Structure</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-10.png" alt="android 1 10" width="50%"></span>
-Das ist das Projekt-Root-Verzeichnis. Es enthält alle Dateien, die für das Projekt wichtig sind.</p>
-</div>
-<div class="sect2">
-<h3 id="_manifest_ordner"><a class="anchor" href="#_manifest_ordner"></a>7.1. Manifest Ordner</h3>
-<div class="paragraph">
-<p>Der Manifest-Ordner ist die Quelle der Wahrheit für die Android-App; er enthält AndroidManifest.xml.
-Klicke auf AndroidManifest.xml, um es zu öffnen und Dir den Inhalt anzusehen.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-11.png" alt="android 1 11" width="100%"></span>
-Das Java-Verzeichnis enthält alle Kotlin- (.kt) und Java-Dateien (.java), die wir erstellen, wenn wir unsere Android-Apps erstellen.
-Beispielsweise, im nächsten Bild, haben wir ein Package mit (androidTest) und (test), und hier fügen wir unsere Tests hinzu.
-Klicke einfach einmal alle Verzeichnisse durch um deren Inhalt zu sehen.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-12.png" alt="android 1 12" width="100%"></span>
-Im AndroidTest-Verzeichnis haben wir unsere UI-Tests, und im Test-Verzeichnis haben wir unsere Unit-Tests.
-Unit-Tests testen kleine Teile unseres Codes, um sicherzustellen, dass das gewünschte Verhalten wie erwartet ist.
-Test-Driven Development (TDD) ist während der App-Entwicklung hervorragend und wertvoll.
-Einige Unternehmen folgen dieser Regel, andere nicht. Aber grundsätzlich ist es eine gute Praxis, den Code immer zu testen.</p>
-</div>
-<div class="paragraph">
-<p>Das res-Verzeichnis enthält XML-Layouts, UI-Strings, drawable-Images und Mipmap-Icons.
-Auf der anderen Seite enthält das values-Verzeichnis viele nützliche XML-Dateien wie Dimensionen, Farben und Themes.
-Klicke auf das res-Verzeichnis, um Dich mit dem vertraut zu machen, was dort ist, da wir es im nächsten Kapitel verwenden werden.</p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/android-1-13.png" alt="android 1 13" width="100%"></span>
-Zuletzt, im Gradle-Scripts Verzeichnis, haben wir die build-Konfiguration, die die beschreiben auf welche Art unser Projekt gebaut werden soll für unser Projekt enthalten.
-Es ist in Module aufgeteilt und die Einträge in der obersten Datei gelten für alle Module.</p>
-</div>
-<div class="paragraph">
-<p>Ein Modul ist eine Sammlung von Source-Dateien und Build-Einstellungen, die es Dir ermöglichen, Dein Projekt in verschiedene Einheiten mit bestimmten Zwecken zu unterteilen.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_deine_app_mit_gradlew_laufen_lassen"><a class="anchor" href="#_deine_app_mit_gradlew_laufen_lassen"></a>8. Deine App mit Gradlew laufen lassen</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Zuerst mal die installierte Gradle-Version checken mit ./gradlew (GradleWrapper).</p>
-</div>
-<div class="paragraph">
-<p>Mit ./gradlew clean und ./gradlew build kannst Du Dein Projekt bauen.</p>
-</div>
-<div class="paragraph">
-<p>Ansonsten kannst Du auch einfach auf den grünen Pfeil in der IDE klicken.</p>
 </div>
 </div>
 </div>
