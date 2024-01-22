@@ -24,7 +24,7 @@ link:https://unterrainerinformatik.github.io/lectures/android-1.html[Android - 1
 * Deine App mit Gradlew laufen lassen
 
 == Jetpack Compose
-link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2 - Jatpack Compose]
+link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2 - Jetpack Compose]
 
 * Android Views mit Jetpack Compose
 * Scrollable List mit Jetpack Compose
@@ -33,5 +33,12 @@ link:https://unterrainerinformatik.github.io/lectures/android-2.html[Android - 2
 * Accessibility
 * Declarative Graphics
 
-== Android - 3
-link:https://unterrainerinformatik.github.io/lectures/android-3.html[Android - 3 - ]
+== Lifecycles & ViewModel
+link:https://unterrainerinformatik.github.io/lectures/android-3.html[Android - 3 - Lifecycles & ViewModel]
+
+* UI-Controllers
+* Lifecycles
+* ViewModel
+
+== Android - 4
+link:https://unterrainerinformatik.github.io/lectures/android-4.html[Android - 4 - ]

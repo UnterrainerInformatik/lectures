@@ -23,8 +23,15 @@ In Android gibt es 2 Arten von UI-Controllern:
 Man hat im allgemeinen keinen Einfluss auf diese Vorgänge... Das passiert einfach bei:
 
 * User Aktionen
+** Rotation
+** Zurück-Button
+** ...
 * System Events
+** Konfigurationsänderungen
+** Zu wenig Speicher
+** ...
 
+WARNING: Handys raus, App starten und dann rotieren, pausieren, App switchen, etc... Was glaubt ihr passiert hier wohl mit den Applikationen im Hintergund und warum kommen die zum Beispiel beim Switchen wieder zurück an genau die richtige Stelle?
 
 Daten sollten daher NICHT direkt in Activities oder Fragments gespeichert werden!
 Diese wären dann nämlich einfach weg.
@@ -54,10 +61,10 @@ Dabei verliert man das jeweilige Element natürlich.
 *Man ist selbst dafür verantwortlich, dass die Daten dieses Prozedere überleben und das Element später wieder aufgebaut werden kann.*
 
 === Activity Lifecycle
-image:android-3-3.png[align="center",width="100%"]
+image:android-3-3.png[align="center",width="50%"]
 
 === Fragment Lifecycle
-image:android-3-4.png[align="center",width="100%"]
+image:android-3-4.png[align="center",width="50%"]
 
 === Daten Persistieren
 Es gibt die Methoden:
@@ -67,6 +74,7 @@ Es gibt die Methoden:
 
 Diese werden automatisch aufgerufen, wenn das System die Daten speichern oder wiederherstellen will.
 Das ist für kleinere Datenmengen gedacht und funktioniert auch ganz gut.
+
 Für große Datenmengen oder Daten, die schwierig zu serialisieren sind, ist das aber weniger geeignet.
 Außerdem gibt es noch asynchrone Aufrufe, die noch laufen können, obwohl diese Methoden schon aufgerufen wurden und der UI-Controller gerade zerstört wurde.
 Dafür brauchen wir dann doch eine andere Lösung.
@@ -81,12 +89,14 @@ Ohne System wird das ganze ziemlich schnell unübersichtlich.
 
 Im ViewModel werden auch externe Datenquellen angebunden (Datenbank, Webservices...)
 
-image:android-3-5.png[align="center",width="100%"]
+image:android-3-5.png[align="center",width="50%"]
 
 === ViewModel Lifecycle
-image:android-3-6.png[align="center",width="100%"]
+image:android-3-6.png[align="center",width="50%"]
 
 ... Das ViewModel wird erst zerstört, wenn die Applikation komplett beendet wird.
+
+WARNING: Ihr verwendet das ViewModel mit `remember()` oder `mutableStateOf()`.
 
 === Shared Viewmodel
 Ein gängiges Problem ist, dass sich zwei Fragments Daten teilen müssen.
@@ -95,3 +105,33 @@ Ein gängiges Problem ist, dass sich zwei Fragments Daten teilen müssen.
 * Das zweite zeigt Daten zum vom ersten ausgewählten Item an (z.B. das Bundesland)
 
 Hier ist ein ViewModel sehr hilfreich, auf das beide Fragments Zugriff haben.
+
+== LiveData
+* LiveData ist ein Observable Datenhalter
+* Wird von Android bereitgestellt
+* Wird von ViewModels verwendet, um Daten zu speichern
+* Wird von Activities und Fragments verwendet, um auf Daten zu reagieren
+
+=== Observer Pattern
+* ViewModels sollten nichts vom View wissen
+* Der View trägt sich beim LiveData im ViewModel ein, damit er updates bekommt
+* Der View kann Methoden im ViewModel aufrufen, falls ein Benutzer eine Aktion ausführt
+
+image:android-3-7.png[align="center",width="50%"]
+
+=== Livecycle-Awareness
+* Schickt nur Updates an aktive Abonnenten (STARTED oder RESUMED)
+* Beim Abonnieren wird ein LifeCylce-Objekt übergeben
+* Wenn dieses Objekt auf DESTROYED wechselt, wird das Abonnement automatisch entfernt
+
+image:android-3-8.png[align="center",width="50%"]
+
+=== Vorteile
+* UI zeigt sicher immer den Data-State an
+* Keine Mem-Leaks
+* Keine Crashes wegen gestoppter Activities
+* Kein manuelles Lifecycle-Handling
+* Immer Up-To-Date (auch nach Aufwachen, Config-Änderungen, ...)
+* Resourcen teilen (singleton LiveData)
+
+WARNING: Ihr verwendet LiveData mit `observeAsState()` oder `observe()`.
