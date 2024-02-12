@@ -943,8 +943,10 @@ Jede von Ihnen erstellte Compose-Funktion kann Parameter akzeptieren, die es der
 <div class="sect2">
 <h3 id="_einleitung_2"><a class="anchor" href="#_einleitung_2"></a>2.1. Einleitung</h3>
 <div class="paragraph">
-<p>Beim Erstellen von Android-Anwendungen sind wir uns alle einig, dass Sie wissen müssen, wie Sie eine <code>RecyclerView</code> erstellen, um Ihre Daten anzuzeigen. Mit unserer neuen, modernen Art, Android-Anwendungen zu erstellen, können wir <code>LazyColumn</code> verwenden, was sich ähnlich verhält.
-In diesem Rezept werden wir uns Zeilen, Spalten und <code>LazyColumn</code> ansehen und eine scrollbare Liste mit unseren Dummy-Daten erstellen.
+<p>Beim Erstellen von Android-Anwendungen sind wir uns alle einig, dass Sie wissen müssen, wie Sie eine <code>RecyclerView</code> erstellen, um Ihre Daten anzuzeigen. Mit unserer neuen, modernen Art, Android-Anwendungen zu erstellen, können wir <code>LazyColumn</code> verwenden, was sich ähnlich verhält.</p>
+</div>
+<div class="paragraph">
+<p>In diesem Rezept werden wir uns Zeilen, Spalten und <code>LazyColumn</code> ansehen und eine scrollbare Liste mit unseren Dummy-Daten erstellen.
 Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
 </div>
 <div class="paragraph">
@@ -1056,7 +1058,41 @@ Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
 </div>
 <div class="sect2">
 <h3 id="_funktionsweise_2"><a class="anchor" href="#_funktionsweise_2"></a>2.3. Funktionsweise</h3>
-
+<div class="paragraph">
+<p>In Kotlin gibt es zwei Arten von Listen: unveränderliche (<code>immutable</code>) und veränderliche (<code>mutable</code>). Unveränderliche Listen sind Listen mit Elementen, die nicht geändert werden können (es werden Kopien zurückgegeben und nicht die eigentliche Liste), während veränderliche Listen Elemente enthalten, die in der Liste modifiziert werden können. Um eine Liste zu definieren, können wir sagen, dass eine Liste eine generische, geordnete Sammlung von Elementen ist, und diese Elemente können in Form von Ganzzahlen, Zeichenketten, Bildern usw. vorliegen, was größtenteils vom Typ der Daten abhängt, die unsere Listen enthalten sollen.</p>
+</div>
+<div class="paragraph">
+<p>Zum Beispiel haben wir in unserem Beispiel eine Zeichenkette und ein Bild, die unsere Lieblingsstädte anhand ihres Namens und Bildes identifizieren.</p>
+</div>
+<div class="paragraph">
+<p>In unserer <code>City</code>-Datenklasse verwenden wir <code>@StringRes</code> und <code>@DrawableRes</code>, um dies direkt aus den <code>res</code>-Ordnern für Drawable und String einfach abzurufen, und sie repräsentieren auch die <code>ID</code> für die Bilder und Zeichenketten.</p>
+</div>
+<div class="paragraph">
+<p>Wir haben <code>CityList</code> erstellt und sie mit der <code>composable</code>-Funktion annotiert und die Liste der Stadtobjekte als Parameter in der Funktion deklariert. Eine scrollbare Liste in Jetpack Compose wird mit <code>LazyColumn</code> erstellt. Der Hauptunterschied zwischen <code>LazyColumn</code> und <code>Column</code> besteht darin, dass bei Verwendung von <code>Column</code> nur kleine Elemente angezeigt werden können, da Compose alle Elemente auf einmal lädt.</p>
+</div>
+<div class="paragraph">
+<p>Zusätzlich kann eine Spalte nur feste komponierbare Funktionen enthalten, während <code>LazyColumn</code>, wie der Name schon sagt, den Inhalt bei Bedarf und auf Abruf lädt, was es gut für das Laden weiterer Elemente bei Bedarf macht. Außerdem verfügt <code>LazyColumn</code> über eine eingebaute Scrollfähigkeit, was die Arbeit für Entwickler erleichtert.</p>
+</div>
+<div class="paragraph">
+<p>Wir haben auch eine komposable Funktion, <code>CityCard</code>, erstellt, in der wir das <code>Card()</code>-Element aus Compose importieren. Eine Karte enthält Inhalte und Aktionen zu einem einzelnen Objekt. In unserem Beispiel hat unsere Karte zum Beispiel ein Bild und den Namen der Stadt. Das <code>Card()</code>-Element in Compose hat die folgenden Eingaben in seinen Parametern:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="kotlin"><span class="nd">@Composable</span>
+<span class="k">fun</span> <span class="nf">Card</span><span class="p">(</span>
+ <span class="n">modifier</span><span class="p">:</span> <span class="nc">Modifier</span> <span class="p">=</span> <span class="nc">Modifier</span><span class="p">,</span>
+ <span class="n">shape</span><span class="p">:</span> <span class="nc">Shape</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">shapes</span><span class="p">.</span><span class="n">medium</span><span class="p">,</span>
+ <span class="n">backgroundColor</span><span class="p">:</span> <span class="nc">Color</span> <span class="p">=</span> <span class="nc">MaterialTheme</span><span class="p">.</span><span class="n">colors</span><span class="p">.</span><span class="n">surface</span><span class="p">,</span>
+ <span class="n">contentColor</span><span class="p">:</span> <span class="nc">Color</span> <span class="p">=</span> <span class="nf">contentColorFor</span><span class="p">(</span><span class="n">backgroundColor</span><span class="p">),</span>
+ <span class="n">border</span><span class="p">:</span> <span class="nc">BorderStroke</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+ <span class="n">elevation</span><span class="p">:</span> <span class="nc">Dp</span> <span class="p">=</span> <span class="mi">1</span><span class="p">.</span><span class="n">dp</span><span class="p">,</span>
+ <span class="n">content</span><span class="p">:</span> <span class="nd">@Composable</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nc">Unit</span>
+<span class="p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Das bedeutet, dass Sie Ihre Karte leicht nach Ihren Wünschen modellieren können. Unsere Karte hat zum Beispiel <code>Padding</code> und <code>Elevation</code>, und der Bereich enthält eine Spalte. In dieser Spalte haben wir ein Bild und Text, der dazu dient, das Bild näher zu beschreiben und mehr Kontext zu bieten.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1065,11 +1101,37 @@ Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_einleitung_3"><a class="anchor" href="#_einleitung_3"></a>3.1. Einleitung</h3>
-
+<div class="paragraph">
+<p>In Android ist es Usus zwischen verschiedenen Inhalten zu 'sliden'. Dies trifft zum Beispiel bei Carousels oder bei Tabs zu.
+Hier werden wir einen <code>Pager</code> bauen, der zwischen einzelnen Seiten horizontal hin- und herwechseln kann. Er hat einen <code>State</code>, der die Seite bestimmt, die dann angezeigt wird. Die Seite wird mittels einer Farbe symbolisiert.
+Sie können im vorherigen Programm weiter machen.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_programm_3"><a class="anchor" href="#_programm_3"></a>3.2. Programm</h3>
-
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fügen sie folgende Zeilen zur <code>build.gradle(Module:app)</code></p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>implementation("com.google.accompanist:accompanist-pager:0.32.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.32.0")</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Accompanist ist von JetPack und bietet einige nützliche Komponenten, die wir verwenden können.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Im gleichen Projekt</p>
+</li>
+</ol>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_funktionsweise_3"><a class="anchor" href="#_funktionsweise_3"></a>3.3. Funktionsweise</h3>
@@ -1148,7 +1210,7 @@ Zusätzlich werden wir dabei auch etwas Kotlin lernen.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-02-11 19:13:11 UTC
+Last updated 2024-02-12 12:19:34 UTC
 </div>
 </div>
 </body>
