@@ -12,7 +12,7 @@ icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/do
 icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
 endif::backend-html5[]
 
-== Introduction
+== Einführung
 link:https://unterrainerinformatik.github.io/lectures/android-1.html[Android - 1 - Introduction]
 
 * Grundlagen Android-Entwicklung

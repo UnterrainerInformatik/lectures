@@ -1,0 +1,177 @@
+= Android - Course
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:source-highlighter: highlight.js
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/index.html[BACK to Index]
+
+== Vorwissen
+* Was ist ein verteiltes System?
+    
+Zusammenschluss unabhängiger Computer, die sich für den Benutzer als ein einziges System präsentieren.
+
+image:distributed-systems-0.png[align="center",width="40%"]
+
+image:distributed-systems-1.png[align="center",width="80%"]
+    
+* Warum müssen in verteilten Systemen Nachrichten übertragen werden?
+** Kommunikation
+** Koordination
+** Konsistenz
+** Fehlertoleranz
+** Skalierbarkeit
+** Transparenz
+
+* Asymmetrische Verschlüsselung (public-private key-pair)
+** Public- Private Key Pair
+
+* OAuth2 (basic)
+** OAuth2 ist ein offenes Protokoll, das es ermöglicht, in einer standardisierten Weise den Zugriff auf Webdienste zu delegieren, ohne dass der Benutzer seine Zugangsdaten weitergeben muss.
+
+* OpenIDConnect (basic)
+** OpenID Connect (OIDC) ist ein Identitätsauthentifizierungsprotokoll, das eine Erweiterung der offenen Autorisierung (OAuth) 2.0 darstellt, um den Prozess der Authentifizierung und Autorisierung von Benutzern zu standardisieren, wenn sie sich anmelden, um auf digitale Dienste zuzugreifen.
+
+== Lernziele
+* JWT
+** Was sind JWTs?
+** Wie sieht ein JWT aus?
+** Welche Probleme lösen sie?
+** Wie funktioniert das Signieren?
+
+* OAuth
+** Wie wird ein JWT bei OAuth-Authorization verwendet?
+** Was ist ein Access-Token?
+** Was ist ein Refresh-Token?
+
+== Sinn von JWT
+* Sichere Übertragung von Informationen über JSON
+** *Datenübertragung*
+*** Sichere Übertragung von Daten
+** *Authorisation*
+*** Wenn ein Benutzer eingeloggt ist, enthält von da an jeder Request einen JWT (bearer-token). Dieser enthält die Identität des Benutzers (Identity - Wer bin ich?) und dessen Rechte (Claims - Anrechte).
+
+=== Was heißt Sicher?
+* *Integrität*
++
+Ist das die Nachricht von meinem Gegenüber, oder wurde diese abgefangen und verändert?
++
+-> signieren (Header + Payload)
+
+* *Geheimhaltung*
++
+Niemand, außer dem Empfänger, soll die Übertragung lesen können.
++
+-> verschlüsseln (gesamten Token)
++
+Ist nicht die Norm. Normalerweise wird nur signiert. Wenn ihr verschlüsseln wollt, müsst ihr euch selber darum kümmern.
+
+
+== Aufbau und Inhalt eines JWT
+* *Identity (Identität)*
+** Benutzerdaten
+*** Name
+*** Email
+*** …
+
+* *Claims (Anrechte)*
+** Zum Beispiel das Recht…
+*** … in der UI …
+**** … eine gewisse Aktion ausführen zu dürfen
+**** … einen Bildschirm zu sehen
+**** … eine detailliertere Ansicht zu haben
+**** …
+*** … im Backend…
+**** … einen Datensatz abzufragen
+**** … einen Datensatz zu ändern
+**** … einen Datensatz zu löschen
+**** …
+		
+=== Struktur
+* Header
+** Welcher Signaturalgorithmus wird verwendet?
+** Typ des Tokens (meistens 'JWT')
+** *Base64Url encoded*
+
+* Inhalt (Payload)
+** Anrechte (Claims)
+** *Base64Url encoded*
+* Signatur
++
+	Verschlüsselungsalgorithmus(
+		base64UrlEncode(header) + "." +
+		base64UrlEncode(payload),
+		secret
+	)
++
+In der Form: xxxxx.yyyyy.zzzzz
++		 
+Siehe: link:https://jwt.io/#debugger-io[]
+
+image:jwt-0.png[align="center",width="60%"]
+
+== Typische Verwendung
+
+=== OAuth2
+
+image:jwt-1.png[align="center",width="80%"]
+
+1. Die Anwendung oder der Client fordert beim Autorisierungsserver eine Berechtigung an. Dies erfolgt über einen der verschiedenen Autorisierungsabläufe. Beispielsweise durchläuft eine typische OpenID Connect-konforme Webanwendung den /oauth/authorize-Endpunkt mit dem 'authorization code flow'.
+2. Wenn die Berechtigung erteilt wird, gibt der Autorisierungsserver ein Zugriffstoken an die Anwendung zurück.
+3. Die Anwendung verwendet das Zugriffstoken, um auf eine geschützte Ressource (wie eine API) zuzugreifen.
+
+Während dieser Kommunikation wird der Inhalt des Tokens immer wieder lesbar über verschiedene Ressourcen hinweg übertragen.
+
+IMPORTANT: NIEMALS Geheimnisse in einen unverschlüsselten Token packen!
+
+
+
+WARNING: ÜBUNG: link:https://quarkus.io/guides/security-jwt[]
+  +
+  Wenn wir uns nochmal die Claims (Anrechte) ins Gedächtnis rufen, dann gibt es GUI- und Server-bezogene.
+  Wir bekommen jetzt am Server einen Bearer-Token im Authorization-Header und können den mit einer Library überprüfen (Signatur testen).
+  Dann können wir am Backend Zugriff basierend auf diesen Claims zulassen oder nicht.
+  Irgendwie müssen wir das dem Backend sagen (diese Rolle darf auf diesen Endpoint POST machen)…
+  Das machen wir mit SmallryeJWT-Annotations.
+
+
+== Authorization Code Flow
+link:https://developer.okta.com/docs/guides/implement-grant-type/authcode/main/[]
+
+image:jwt-2.png[align="center",width="90%"]
+
+1. Ihre Anwendung (App) fordert einen Autorisierungscode vom Autorisierungsserver (Okta) an.
+2. Okta präsentiert eine Authentifizierungsaufforderung (die Okta-Anmeldeseite) im Browser des Benutzers.
+3. Der Benutzer authentifiziert sich beim Autorisierungsserver und erteilt seine Zustimmung.
+4. Der Browser erhält nach der Benutzerauthentifizierung einen Autorisierungscode vom Autorisierungsserver (Okta). Der Autorisierungscode wird an Ihre App übergeben.
+5. Ihre App sendet diesen Code und das Client-Geheimnis an Okta. Siehe Austausch des Codes gegen Tokens.
+6. Okta gibt Zugriffs- und ID-Tokens zurück, sowie optional einen Aktualisierungstoken.
+7. Ihre App kann diese Tokens jetzt verwenden, um im Namen des Benutzers den Ressourcenserver (zum Beispiel eine API) aufzurufen.
+8. Der Ressourcenserver überprüft das Token, bevor er auf die Anfrage antwortet. Siehe Zugriffstoken validieren.
+
+== Access Token / Refresh Token
+link:https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/[]
+
+=== Access Token
+image:jwt-3.png[align="center",width="50%"]
+
+Hat traditionell eine sehr kurze Ablauffrist!
+Dadurch müssen die Clients sehr häufig am Authorization-Server einen neuen Access-Token abholen (aber eben nicht bei JEDEM Request).
+Wenn ich jetzt einen User sperren will (löschen oder die Rechte (Rollen) verändern), dann dauert es maximal genau diese Expires-Zeit, bis der Client einen neuen Token mit den neuen Rechten (oder keinen Token mehr) bekommt und damit diese Änderungen in Kraft treten.
+
+=== Refresh Token
+
+Verhindert, dass Du immer wieder Dein Passwort am Google-OAuth-Authorization Server eingeben musst.
+Client muss trotzdem zum Authorization-Server.
+Falls Änderungen in der Berechtigung waren, werden diese im neuen Access-Token mitgegeben.
+Wenn der User gelöscht wurde, bekommt er auch mit dem Refresh-Token keinen neuen Access-Token mehr.
+
+image:jwt-4.png[align="center",width="80%"]

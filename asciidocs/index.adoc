@@ -12,5 +12,10 @@ icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/le
 icon:github-square[link=https://github.com/UnterrainerInformatik/lectures] ‏ ‏ ‎
 endif::backend-html5[]
 
+link:https://unterrainerinformatik.github.io/lectures/index.html[BACK to Index]
+
 == Android - Course
 link:https://unterrainerinformatik.github.io/lectures/android.html[Android - Course]
+
+== JWT - Lecture
+link:https://unterrainerinformatik.github.io/lectures/jwt.html[JWT - Lecture]
