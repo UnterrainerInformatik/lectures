@@ -268,6 +268,7 @@ image:android-2-7.png[align="center"]
 
 === Einleitung
 Beim Erstellen von Android-Anwendungen sind wir uns alle einig, dass Sie wissen müssen, wie Sie eine `RecyclerView` erstellen, um Ihre Daten anzuzeigen. Mit unserer neuen, modernen Art, Android-Anwendungen zu erstellen, können wir `LazyColumn` verwenden, was sich ähnlich verhält.
+
 In diesem Rezept werden wir uns Zeilen, Spalten und `LazyColumn` ansehen und eine scrollbare Liste mit unseren Dummy-Daten erstellen.
 Zusätzlich werden wir dabei auch etwas Kotlin lernen.
 
@@ -361,12 +362,52 @@ Wenn Sie die `CityCardPreview`-Komponierfunktion ausführen, sollte eine scrollb
 image:android-2-7.png[align="center"]
 
 === Funktionsweise
+In Kotlin gibt es zwei Arten von Listen: unveränderliche (`immutable`) und veränderliche (`mutable`). Unveränderliche Listen sind Listen mit Elementen, die nicht geändert werden können (es werden Kopien zurückgegeben und nicht die eigentliche Liste), während veränderliche Listen Elemente enthalten, die in der Liste modifiziert werden können. Um eine Liste zu definieren, können wir sagen, dass eine Liste eine generische, geordnete Sammlung von Elementen ist, und diese Elemente können in Form von Ganzzahlen, Zeichenketten, Bildern usw. vorliegen, was größtenteils vom Typ der Daten abhängt, die unsere Listen enthalten sollen.
+
+Zum Beispiel haben wir in unserem Beispiel eine Zeichenkette und ein Bild, die unsere Lieblingsstädte anhand ihres Namens und Bildes identifizieren.
+
+In unserer `City`-Datenklasse verwenden wir `@StringRes` und `@DrawableRes`, um dies direkt aus den `res`-Ordnern für Drawable und String einfach abzurufen, und sie repräsentieren auch die `ID` für die Bilder und Zeichenketten.
+
+Wir haben `CityList` erstellt und sie mit der `composable`-Funktion annotiert und die Liste der Stadtobjekte als Parameter in der Funktion deklariert. Eine scrollbare Liste in Jetpack Compose wird mit `LazyColumn` erstellt. Der Hauptunterschied zwischen `LazyColumn` und `Column` besteht darin, dass bei Verwendung von `Column` nur kleine Elemente angezeigt werden können, da Compose alle Elemente auf einmal lädt.
+
+Zusätzlich kann eine Spalte nur feste komponierbare Funktionen enthalten, während `LazyColumn`, wie der Name schon sagt, den Inhalt bei Bedarf und auf Abruf lädt, was es gut für das Laden weiterer Elemente bei Bedarf macht. Außerdem verfügt `LazyColumn` über eine eingebaute Scrollfähigkeit, was die Arbeit für Entwickler erleichtert.
+
+Wir haben auch eine komposable Funktion, `CityCard`, erstellt, in der wir das `Card()`-Element aus Compose importieren. Eine Karte enthält Inhalte und Aktionen zu einem einzelnen Objekt. In unserem Beispiel hat unsere Karte zum Beispiel ein Bild und den Namen der Stadt. Das `Card()`-Element in Compose hat die folgenden Eingaben in seinen Parametern:
+
+[source, kotlin]
+----
+@Composable
+fun Card(
+ modifier: Modifier = Modifier,
+ shape: Shape = MaterialTheme.shapes.medium,
+ backgroundColor: Color = MaterialTheme.colors.surface,
+ contentColor: Color = contentColorFor(backgroundColor),
+ border: BorderStroke? = null,
+ elevation: Dp = 1.dp,
+ content: @Composable () -> Unit
+)
+----
+
+Das bedeutet, dass Sie Ihre Karte leicht nach Ihren Wünschen modellieren können. Unsere Karte hat zum Beispiel `Padding` und `Elevation`, und der Bereich enthält eine Spalte. In dieser Spalte haben wir ein Bild und Text, der dazu dient, das Bild näher zu beschreiben und mehr Kontext zu bieten.
+
 
 == Tab-Layout mit View Pager
 
 === Einleitung
+In Android ist es Usus zwischen verschiedenen Inhalten zu 'sliden'. Dies trifft zum Beispiel bei Carousels oder bei Tabs zu.
+Hier werden wir einen `Pager` bauen, der zwischen einzelnen Seiten horizontal hin- und herwechseln kann. Er hat einen `State`, der die Seite bestimmt, die dann angezeigt wird. Die Seite wird mittels einer Farbe symbolisiert.
+Sie können im vorherigen Programm weiter machen.
 
 === Programm
+1. Fügen sie folgende Zeilen zur `build.gradle(Module:app)`
+[source, gradle]
+----
+implementation("com.google.accompanist:accompanist-pager:0.32.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.32.0")
+----
+Accompanist ist von JetPack und bietet einige nützliche Komponenten, die wir verwenden können.
+
+2. Im gleichen Projekt 
 
 === Funktionsweise
 

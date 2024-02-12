@@ -1,0 +1,45 @@
+= Android - Course
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:source-highlighter: highlight.js
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/index.html[BACK to Index]
+
+== Package by Layer vs. Package by Feature
+link:https://medium.com/sahibinden-technology/package-by-layer-vs-package-by-feature-7e89cde2ae3a[]
+
+Wenn wir ein Projekt erstellen und uns überlegen wie wir die Packages aufteilen, haben wir folgende Möglichkeiten.
+
+image:package-layer-feature-0.png[align="center",width="50%"]
+
+Die linke Option heißt 'Package by Layer' und die rechte Option 'Package by Feature'.
+
+=== Package by Layer
+...würde im Projekt-Explorer wie folgt aussehen.
+
+image:package-layer-feature-1.png[align="center",width="40%"]
+
+Hier werden die Packages (Ebenen) nach Layer vergeben.
+Alle JPAs sind in einem Package, sowie auch alle Entities oder Repositories, etc...
+
+Für kleinere Projekte zu empfehlen.
+
+=== Package by Feature 
+
+image:package-layer-feature-2.png[align="center",width="40%"]
+
+Hier werden die Packages (Ebenen) nach Features ausgerichtet.
+Wir haben zum Beispiel die REST-Schnittstelle 'accounting', die sich komplett in einem eigenen Package befindet.
+
+Vorteil davon ist, dass dies schon eine Vorstufe zur Zerteilung zu Microservices ist. So eingeteilte Projekte können damit besser zerlegt werden.
+
+Wird als Refactoring für mittlere Projekte empfohlen.
