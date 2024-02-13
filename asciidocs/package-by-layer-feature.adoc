@@ -42,4 +42,7 @@ Wir haben zum Beispiel die REST-Schnittstelle 'accounting', die sich komplett in
 
 Vorteil davon ist, dass dies schon eine Vorstufe zur Zerteilung zu Microservices ist. So eingeteilte Projekte können damit besser zerlegt werden.
 
+Die Kapselung ist hier besser, da die Klassen teilweise auf package-private gesetzt werden können und somit nur innerhalb des Packages sichtbar sind.
+Im Falle des 'Package by Layer' wären die Klassen alle public und somit von überall sichtbar.
+
 Wird als Refactoring für mittlere Projekte empfohlen.
