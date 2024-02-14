@@ -50,7 +50,11 @@ image:distributed-systems-1.png[align="center",width="80%"]
 * OAuth
 ** Wie wird ein JWT bei OAuth-Authorization verwendet?
 ** Was ist ein Access-Token?
+*** Wozu braucht man ihn?
+*** Wie wird er verwendet?
 ** Was ist ein Refresh-Token?
+*** Wozu braucht man ihn?
+*** Wie wird er verwendet?
 
 == Sinn von JWT
 * Sichere Übertragung von Informationen über JSON
