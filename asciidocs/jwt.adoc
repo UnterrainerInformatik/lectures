@@ -136,7 +136,31 @@ Während dieser Kommunikation wird der Inhalt des Tokens immer wieder lesbar üb
 
 IMPORTANT: NIEMALS Geheimnisse in einen unverschlüsselten Token packen!
 
+==== OpenID Connect (OIDC)
+https://de.wikipedia.org/wiki/OpenID_Connect
 
+* OpenID Connect (OIDC) ist ein Identitätsauthentifizierungsprotokoll, das eine Erweiterung der offenen Autorisierung (OAuth) 2.0 darstellt, um den Prozess der Authentifizierung und Autorisierung von Benutzern zu standardisieren, wenn sie sich anmelden, um auf digitale Dienste zuzugreifen.
+		
+* Erweiterung von OAuth2
+* Wird gerne bei der Authentifizierung bei REST-Schnittstellen verwendet
+  § Verwendet auch laut Spezifikation selbst REST-Schnittstellen und JSON-Datenformat
+* De-Fakto-Standard
+
+==== Keycloak
+https://en.wikipedia.org/wiki/Keycloak
+https://www.keycloak.org/
+https://www.intension.de/infoblog/was-ist-keycloak/
+
+* Open Source
+* Implementierung von OpenID Connect und OAuth2 und SAML
+** LDAP, OAuth, SAML
+* Auf Java-Basis
+* Identity Access Management (IAM) System
+* On premise oder in Cloud
+* SAML - Im Java-Code mit Annotationen sagen, wer wo was darf
+** Muss ja auch im Code irgendwo definiert sein
+** Alt, aber immer noch OK
+* Single-Sign-On (SSO) Provider
 
 WARNING: ÜBUNG: link:https://quarkus.io/guides/security-jwt[]
   +
