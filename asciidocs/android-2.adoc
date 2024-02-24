@@ -54,8 +54,10 @@ Wir werden die folgenden Parameter verwenden:
 Dem Modifier können wir eine Liste von Modifier-Objekten übergeben, die wir verwenden möchten. So setzen wir zum Beispiel `fillMaxWidth()`, um die Breite des Textfelds auf die maximale Breite zu setzen.
 Wenn wir `fill()` aufrufen, wird das Textfeld voll gefüllt. Wir setzen `padding(top)` auf `16.dp`, was zusätzlichen Platz entlang jeder Kante des Inhalts in dp anwendet. Es hat auch einen Wert, der der Wert ist, der im OutlinedTextField eingegeben werden soll, und ein onValueChange-Lambda, das auf die Eingabeänderung hört.
 +
+====
 IMPORTANT: Hausübung:
 Installieren und auf die neueste Version updaten.
+====
 +
 . Wir weisen unserem `OutlinedText` auch Randfarben zu, wenn er fokussiert und nicht fokussiert ist, um verschiedene Zustände darzustellen. Wenn Sie also mit der Eingabe beginnen, ändert sich die Boxfarbe zu Blau, wie im Code angegeben:
 +

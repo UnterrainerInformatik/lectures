@@ -1,4 +1,4 @@
-= Android - Course
+= JWT (JSON Web Token) und OAuth2
 ifndef::imagesdir[:imagesdir: images]
 :icons: font
 :source-highlighter: highlight.js
@@ -47,7 +47,7 @@ image:distributed-systems-1.png[align="center",width="80%"]
 ** Welche Probleme lösen sie?
 ** Wie funktioniert das Signieren?
 
-* OAuth
+* OAuth2 / OpenID Connect (OIDC)
 ** Wie wird ein JWT bei OAuth-Authorization verwendet?
 ** Was ist ein Access-Token?
 *** Wozu braucht man ihn?
@@ -78,6 +78,9 @@ Niemand, außer dem Empfänger, soll die Übertragung lesen können.
 +
 Ist nicht die Norm. Normalerweise wird nur signiert. Wenn ihr verschlüsseln wollt, müsst ihr euch selber darum kümmern.
 
+====
+WARNING: Hier link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle.html[JWT - Group Puzzle] beginnen, oder mit normalen Vortrag hier weitermachen.
+====
 
 == Aufbau und Inhalt eines JWT
 * *Identity (Identität)*
@@ -134,7 +137,9 @@ image:jwt-1.png[align="center",width="80%"]
 
 Während dieser Kommunikation wird der Inhalt des Tokens immer wieder lesbar über verschiedene Ressourcen hinweg übertragen.
 
+====
 IMPORTANT: NIEMALS Geheimnisse in einen unverschlüsselten Token packen!
+====
 
 ==== OpenID Connect (OIDC)
 https://de.wikipedia.org/wiki/OpenID_Connect
@@ -162,6 +167,7 @@ https://www.intension.de/infoblog/was-ist-keycloak/
 ** Alt, aber immer noch OK
 * Single-Sign-On (SSO) Provider
 
+====
 WARNING: ÜBUNG: link:https://quarkus.io/guides/security-jwt[]
   +
   Wenn wir uns nochmal die Claims (Anrechte) ins Gedächtnis rufen, dann gibt es GUI- und Server-bezogene.
@@ -169,7 +175,7 @@ WARNING: ÜBUNG: link:https://quarkus.io/guides/security-jwt[]
   Dann können wir am Backend Zugriff basierend auf diesen Claims zulassen oder nicht.
   Irgendwie müssen wir das dem Backend sagen (diese Rolle darf auf diesen Endpoint POST machen)…
   Das machen wir mit SmallryeJWT-Annotations.
-
+====
 
 == Authorization Code Flow
 link:https://developer.okta.com/docs/guides/implement-grant-type/authcode/main/[]

@@ -1,0 +1,39 @@
+= JWT - Group Puzzle - Text 4
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:source-highlighter: highlight.js
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/index.html[BACK to Index]
+
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle.html[BACK to Group Puzzle]
+
+== Text 4 - Access-Token - Refresh-Token
+
+Texte lesen (Englisch):
+
+====
+https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/
+
+What Is A Token?
+====
+
+====
+https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/
+
+Token types
+====
+
+====
+https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/
+
+When to use Refresh Tokens?
+====

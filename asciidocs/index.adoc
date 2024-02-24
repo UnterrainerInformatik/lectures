@@ -20,5 +20,8 @@ link:https://unterrainerinformatik.github.io/lectures/android.html[Android - Cou
 == JWT - Lecture
 link:https://unterrainerinformatik.github.io/lectures/jwt.html[JWT - Lecture]
 
+=== JWT - Group Puzzle
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle.html[JWT - Group Puzzle]
+
 == Package by Layer vs. Package by Feature
 link:https://unterrainerinformatik.github.io/lectures/package-by-layer-feature.html[Package by Layer vs. Package by Feature]

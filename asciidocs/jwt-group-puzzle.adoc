@@ -1,0 +1,119 @@
+= JWT - Group Puzzle
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:source-highlighter: highlight.js
+:experimental:
+:sectnums:
+:toc:
+ifdef::backend-html5[]
+
+// https://fontawesome.com/v4.7.0/icons/
+icon:file-text-o[link=https://raw.githubusercontent.com/UnterrainerInformatik/documents/main/asciidocs/{docname}.adoc] ‏ ‏ ‎
+icon:github-square[link=https://github.com/UnterrainerInformatik/documents] ‏ ‏ ‎
+endif::backend-html5[]
+
+link:https://unterrainerinformatik.github.io/lectures/index.html[BACK to Index]
+
+== Vorwissen
+* Was ist ein verteiltes System?
+  
+== Ablauf
+[cols="10,1",options="header"]
+|===
+|Ablauf inkl. methodisch-didaktische Hinweise	Lehr-/Lernmittel | Dauer
+|Einleitungsvortrag zum Abgleich des Vorwissens	Frontalunterricht | 20
+|Erklärung des Gruppenpuzzles	Frontalunterricht | 10
+|Gruppenpuzzle - THINK-Phase | 20
+|Gruppenpuzzle - SQUARE-Phase | 40
+|Gruppenpuzzle - SHARE-Phase | 40
+|Nachbesprechung	Fragerunde	20
+|===
+
+== Arbeitsauftrag
+
+Methode: Gruppenpuzzle mit Stafettenpräsentation
+
+=== Fachliche Lernziele
+
+[cols="10,2,2,2"]
+|===
+|Ich weiß um die Grundzüge von JWTs und kann sie erklären. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich kenne verschiedene Verwendungsmöglichkeiten von JWTs. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich kann den Aufbau eines JWTs schildern. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich kann schildern, wie eine Benutzerrolle in einem JWT transportiert wird. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich verstehe die Vorteile von JWTs in Verbindung mit OAuth2 und OpenIDConnect. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich weiß, was ein Authentication-Server im Bereich OAuth2 macht. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich kenne die Funktion und Funktionsweise eines Access-Tokens. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|Ich kenne die Funktion und Funktionsweise eines Refresh-Tokens. | voll erreicht | überwiegend erreicht | nicht überwiegend erreicht
+|===
+
+=== Soziale Lernziele
+
+|===
+|Texte erfassen können
+|Zeitpläne einhalten können
+|Zuhören können
+|Angemessene Lautstärke einhalten können
+|Beim Thema bleiben können.
+|===
+
+=== Methodisch-didaktische Hinweise
+
+==== Einzelarbeit (20 Minuten) THINK-Phase
+Sie erhalten einen Text mit Links (Unterrichtsmaterialien), der sich mit einem Thema auseinandersetzt. Lesen Sie sich bitte den Text aufmerksam durch und fassen Sie die wesentlichen Inhalte in Einzelarbeit stichwortartig zusammen.
+
+==== Expertenphase (40 Minuten) SQUARE-Phase
+Sie bilden nun mit allen anderen Teilnehmer/innen, die denselben Text gelesen haben, eine Arbeitsgruppe (Expertengruppe für dieses eine Thema).
+Ihre Aufgabe ist es, sich über diesen Text auszutauschen und Ihre Erkenntnisse zu vergleichen. Einigen Sie sich auf die wesentlichen Aussagen, die Sie den anderen Teilnehmer/innen mitteilen möchten. Anschließend erstellen Sie ein digitales Lernplakat (oder ein anderes digitales Präsentationsmedium), das als Grundlage für eine spätere Präsentation dieser Inhalte dienen soll. Jeder/Jede von Ihnen wird dieses Thema präsentieren müssen.
+
+==== Stafettenpräsentation (je Thema 10 Minuten) SHARE-Phase
+Sie werden in neue Gruppen eingetailt, in denen von jedem Thema mindestens eine Expertin / ein Experte vertreten ist.
+
+==== Diskussion (20 Minuten)
+Wir diskutieren gemeinsam in der Klasse über den Ausgang, die Aufgabe und die benutzte Methodik.
+
+== Texte
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-1.html[Text 1 (Gruppe 1)]
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-2.html[Text 2 (Gruppe 2)]
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-3.html[Text 3 (Gruppe 3)]
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-4.html[Text 4 (Gruppe 4)]
+
+
+== Kompetenzen
+[cols="10,1",options="header"]
+|===
+|Kompetenzen | Stufe
+
+|Architekturen erklären und beschreiben | B
+|Synchronisationsmethoden | B
+|Softwarearchitektur verteilter Systeme | B
+|Web Development Stack, Socktes | D
+|Auth, Webservices, REST | C
+|===
+
+[cols="10,1",options="header"]
+|===
+|Soziale, personelle und Methoden-Kompetenzen | Stufe
+
+|Gruppenarbeit (Gruppenpuzzle) | C
+|Erklären vor Klassenkollegen | C
+|===
+
+=== Legende
+[cols="1,10",options="header"]
+|===
+|Stufe | Beschreibung
+|A	| wiedergeben	Lernende können die Inhalte wiedergeben
+|B	| verstehen	Lernende verstehen die Thematik bzw. können diese benennen
+|C	| anwenden	Lernende können Aufgaben anhand von AB oder Aufträgen erfüllen
+|D	| analysieren	Lernende geben eigene Informationen an andere weiter
+|E	| entwickeln	Fallbeispiele, Projekte - Lernende arbeiten selbstständig ohne Vorgabe
+|===
+
+== Quellen
+* https://jwt.io
+* https://jwt.io/introduction
+* https://jwt.io/#debugger-io
+* https://quarkus.io/guides/security-jwt
+* https://developer.okta.com/docs/guides/implement-grant-type/authcode/main/
+* https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/

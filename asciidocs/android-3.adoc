@@ -31,10 +31,12 @@ Man hat im allgemeinen keinen Einfluss auf diese Vorgänge... Das passiert einfa
 ** Zu wenig Speicher
 ** ...
 
+====
 WARNING: Handys raus, App starten und dann rotieren, pausieren, App switchen, etc... Was glaubt ihr passiert hier wohl mit den Applikationen im Hintergund und warum kommen die zum Beispiel beim Switchen wieder zurück an genau die richtige Stelle?
 
 Daten sollten daher NICHT direkt in Activities oder Fragments gespeichert werden!
 Diese wären dann nämlich einfach weg.
+====
 
 === Activities
 * Android Applikationen bestehen aus Activities
@@ -96,7 +98,9 @@ image:android-3-6.png[align="center",width="50%"]
 
 ... Das ViewModel wird erst zerstört, wenn die Applikation komplett beendet wird.
 
+====
 WARNING: Ihr verwendet das ViewModel mit `remember()` oder `mutableStateOf()`.
+====
 
 === Shared Viewmodel
 Ein gängiges Problem ist, dass sich zwei Fragments Daten teilen müssen.
@@ -134,4 +138,6 @@ image:android-3-8.png[align="center",width="50%"]
 * Immer Up-To-Date (auch nach Aufwachen, Config-Änderungen, ...)
 * Resourcen teilen (singleton LiveData)
 
+====
 WARNING: Ihr verwendet LiveData mit `observeAsState()` oder `observe()`.
+====

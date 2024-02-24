@@ -41,8 +41,10 @@ image:android-1-2.png[align="center",width="50%"]
 == Android Studio IDE
 Installation unter: link:https://developer.android.com/studio/install[https://developer.android.com/studio/install]
 
+====
 IMPORTANT: Hausübung:
 Installieren und auf die neueste Version updaten.
+====
 
 == Kotlin Grundzüge
 === Kotlin
@@ -189,8 +191,10 @@ fun compare(a: String, b: String): Boolean = a.length < b.length
 === Übung
 Spielwiese unter: link:https://play.kotlinlang.org/koans/overview[https://play.kotlinlang.org/koans/overview]
 
+====
 IMPORTANT: Hausübung: Alle Aufgaben auf dieser Seite links durchmachen.
 Android-Studio herunterladen: https://developer.android.com/studio/releases
+====
 
 == Komponenten einer Android-App
 
