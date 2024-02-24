@@ -73,11 +73,15 @@ Sie werden in neue Gruppen eingetailt, in denen von jedem Thema mindestens eine 
 Wir diskutieren gemeinsam in der Klasse über den Ausgang, die Aufgabe und die benutzte Methodik.
 
 == Texte
-link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-1.html[Text 1 (Gruppe 1)]
-link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-2.html[Text 2 (Gruppe 2)]
-link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-3.html[Text 3 (Gruppe 3)]
-link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-4.html[Text 4 (Gruppe 4)]
+====
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-1.html[Text Gruppe 1]
 
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-2.html[Text Gruppe 2]
+
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-3.html[Text Gruppe 3]
+
+link:https://unterrainerinformatik.github.io/lectures/jwt-group-puzzle-text-4.html[Text Gruppe 4]
+====
 
 == Kompetenzen
 [cols="10,1",options="header"]
